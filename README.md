@@ -149,7 +149,7 @@
 - [商汤代码小浣熊](https://raccoon.sensetime.com/code)：代码生成补全翻译重构……
 - [CodeArts Snap](https://www.huaweicloud.com/product/codeartside/snap.html)：覆盖代码生成、研发知识问答、单元测试用例生成、代码解释、代码注释、代码翻译、代码调试、代码检查等八大研发场景
 - [天工智码](https://sky-code.singularity-ai.com/index.html#/)：基于昆仑天工模型的 AI 代码工具
-- [marscode](https://www.marscode.com/dashboard)：字节跳动出品，基于豆包的AI代码工具，可以作为IDE的插件，支持主流语言。
+- [MarsCode](https://www.marscode.com/dashboard)：字节跳动出品，基于豆包的 AI 代码工具，可以作为 IDE 的插件，支持主流语言
 
 ### 模型训练/部署
 
