@@ -160,3 +160,10 @@
 
 - [提示工程指南](www.promptingguide.ai)：如何使用提示词来完成不同的任务
 - [词魂](https://icihun.com/)：AIGC 精品提示词库
+
+## 国外AI工具汇总
+### 聊天/内容生成
+- [ChatGPT](https://chat.openai.com/):内容生成、文档分析、图像分析、互联网搜索等
+- [huggingChat](https://huggingface.co/chat/):支持多种开源大模型
+- [LLAMA](https://www.meta.ai/):Meta 出品的最强开源大模型
+- [claude](https://claude.ai/):媲美 GPT4
