@@ -162,6 +162,10 @@
 - [提示工程指南](www.promptingguide.ai)：如何使用提示词来完成不同的任务
 - [词魂](https://icihun.com/)：AIGC 精品提示词库
 
+### AI 工具合集
+- [AIbase](https://top.aibase.com/)：一个收集 AI 工具合集的网站
+- [AI Product Home](https://github.com/Eternaldeath/AIProductHome.git):一个收集各种 AI 商业或开源产品的仓库
+
 ## 国外 AI 工具汇总
 
 ### 聊天/内容生成
