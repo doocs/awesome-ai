@@ -163,8 +163,9 @@
 - [词魂](https://icihun.com/)：AIGC 精品提示词库
 
 ### AI 工具合集
+
 - [AIbase](https://top.aibase.com/)：一个收集 AI 工具合集的网站
-- [AI Product Home](https://github.com/Eternaldeath/AIProductHome.git):一个收集各种 AI 商业或开源产品的仓库
+- [AI Product Home](https://github.com/Eternaldeath/AIProductHome)：一个收集各种 AI 商业或开源产品的仓库
 
 ## 国外 AI 工具汇总
 
