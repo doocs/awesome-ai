@@ -174,3 +174,4 @@
 ### AI 写代码
 
 - [GitHub Copilot](https://github.com/features/copilot)：GitHub 官方出品，世界上应用最广泛的人工智能开发者工具
+- [Cursor](https://www.cursor.com/)：一个深度集成了 AI 的代码编辑器，让你的编程效率高到起飞。
