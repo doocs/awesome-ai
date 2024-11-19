@@ -174,7 +174,12 @@
 - [ChatGPT](https://chat.openai.com/)：内容生成、文档分析、图像分析、互联网搜索等
 - [huggingChat](https://huggingface.co/chat/)：支持多种开源大模型
 - [LLAMA](https://www.meta.ai/)：Meta 出品的最强开源大模型
-- [claude](https://claude.ai/)：媲美 GPT4
+- [Claude](https://claude.ai/)：媲美 GPT4
+
+### LLM 框架
+
+- [LangChain](https://www.langchain.com/)：一个用于构建和部署 AI 应用的框架
+- [Langfuse](https://www.langfuse.com/)：开源 LLM 工程平台，跟踪、评估、提示管理和指标，用于调试和改进 LLM 应用程序
 
 ### AI 写代码
 
