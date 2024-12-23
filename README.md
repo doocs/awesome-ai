@@ -66,6 +66,7 @@
 - [易撰](https://www.yizhuan5.com)：自媒体内容
 - [Giiso 写作机器人](https://www.giiso.com)：写作、文配图、风格转换、文生图等
 - [5118 SEO 优化精灵](https://www.5118.com/seometa)：快速生成高质量 SEO 标题、Meta 描述和关键字，提升网站搜索引擎排名
+- [小羊标书](https://www.xiaoyangbiaoshu.com): 专注AI写标书，超长文本，百页标书一键生成，支持上传招标文件，投标素材一键解析
 
 ### AI 翻译
 
