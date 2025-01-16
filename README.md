@@ -171,7 +171,8 @@
 
 ### 聊天/内容生成
 
-- [ChatGPT](https://chat.openai.com/)：内容生成、文档分析、图像分析、互联网搜索等
+- [ChatGPT](https://chatgpt.com/)：内容生成、文档分析、图像分析、联网搜索等
+- [DeepSeek](https://chat.deepseek.com/)：内容生成、文档分析、深度思考、联网搜索等
 - [huggingChat](https://huggingface.co/chat/)：支持多种开源大模型
 - [LLAMA](https://www.meta.ai/)：Meta 出品的最强开源大模型
 - [Claude](https://claude.ai/)：媲美 GPT4
