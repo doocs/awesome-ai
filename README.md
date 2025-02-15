@@ -16,6 +16,7 @@
 - [360 智脑](https://ai.360.com)：360 智脑全家桶
 - [字节小悟空](https://wukong.com/tool)：字节跳动内容生成工具集
 - [达观数据曹植](http://www.datagrand.com/)：行业垂域大模型
+- [留白记事](https://github.com/yenche123/liubai): 直接在微信里调用 8 种大模型，同时让 3 个助手回复你
 
 ### AI 办公-综合
 
