@@ -8,7 +8,7 @@
 - [文心一言](https://yiyan.baidu.com)：内容生成、文档分析、图像分析、图表制作、脑图等
 - [通义千问](https://tongyi.aliyun.com)：内容生成、文档分析、图像分析等
 - [Kimi(月之暗面)](https://kimi.moonshot.cn)：内容生成、文档分析、互联网搜索等
-- [腾讯混元](https://hunyuan.tencent.com/bot/chat)：内容生成、文档分析、灵感推荐等
+- [腾讯元宝](https://yuanbao.tencent.com/chat)：内容生成、文档分析、灵感推荐等
 - [讯飞星火](https://xinghuo.xfyun.cn)：内容生成
 - [抖音豆包](https://www.doubao.com)：内容生成，偏互联网运营方向
 - [智谱 AI](https://open.bigmodel.cn)：内容生成、知识问答等
