@@ -73,6 +73,7 @@
 - [沉浸式翻译](https://immersivetranslate.com)：翻译外语网页、PDF、EPUB 电子书、视频双语字幕等
 - [彩云小译](https://fanyi.caiyunapp.com)：多种格式文档的翻译、同声传译、文档翻译和网页翻译
 - [网易见外](https://sight.youdao.com)：字幕、音频转写、同传、文档翻译等
+- [STranslate](https://stranslate.zggsong.com)：一款即用即走的翻译、OCR工具
 
 ### AI 搜索引擎
 
