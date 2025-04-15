@@ -5,3 +5,6 @@
 .cache
 /node_modules
 *.iml
+node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache
