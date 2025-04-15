@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,ai as l}from"./chunks/framework.TS84ywiI.js";const g=JSON.parse('{"title":"AI 工具集","description":"","frontmatter":{},"headers":[],"relativePath":"intro.md","filePath":"intro.md"}'),i={name:"intro.md"};function n(o,r,h,f,s,c){return t(),a("div",null,r[0]||(r[0]=[l("",45)]))}const p=e(i,[["render",n]]);export{g as __pageData,p as default};
