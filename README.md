@@ -187,3 +187,4 @@
 
 - [GitHub Copilot](https://github.com/features/copilot)：GitHub 官方出品，世界上应用最广泛的人工智能开发者工具
 - [Cursor](https://www.cursor.com/)：一个深度集成了 AI 的代码编辑器，让你的编程效率高到起飞。
+- [vsync](https://github.com/nicepkg/vsync)：AI 编程工具配置同步器，一键同步 Claude Code、Cursor、OpenCode、Codex 之间的 Skills、MCP 服务器、Agents 和 Commands 配置。
