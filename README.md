@@ -5,6 +5,7 @@
 ### 聊天/内容生成
 
 - [DeepSeek](https://chat.deepseek.com/)：内容生成、文档分析、深度思考、联网搜索等
+- **[OpenMagic](https://github.com/Kalmuraee/OpenMagic)** - AI-powered coding toolbar for any web app. Captures element context, previews diffs, and applies approved changes through a reverse proxy.
 - [文心一言](https://yiyan.baidu.com)：内容生成、文档分析、图像分析、图表制作、脑图等
 - [通义千问](https://tongyi.aliyun.com)：内容生成、文档分析、图像分析等
 - [Kimi(月之暗面)](https://kimi.moonshot.cn)：内容生成、文档分析、互联网搜索等
