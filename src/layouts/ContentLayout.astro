@@ -38,5 +38,5 @@ const { title, description, locale, currentPath } = Astro.props;
   </slot>
   <NavBar locale={locale} currentPath={currentPath} />
   <slot />
-  <Footer />
+  <Footer locale={locale} />
 </Head>

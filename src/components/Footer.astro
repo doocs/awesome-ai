@@ -1,27 +1,69 @@
 ---
 import wechatQr from "../assets/wechat-qrcode.jpg";
+import { t } from "../i18n/utils.ts";
+
+interface Props {
+  locale?: "zh" | "en";
+}
+
+const { locale = "zh" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
 ---
 
 <footer class="border-t border-border mt-auto">
   <div class="max-w-[1100px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-    <!-- WeChat Subscribe -->
-    <div class="flex flex-col sm:flex-row items-center gap-5 sm:gap-8 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-border">
-      <img
-        src={wechatQr.src}
-        alt="微信公众号二维码"
-        class="w-32 h-32 sm:w-36 sm:h-36 rounded-xl object-cover shadow-[0_8px_30px_rgba(99,102,241,0.10)] border border-border flex-shrink-0"
-        loading="lazy"
-      />
-      <div class="text-center sm:text-left">
-        <h3 class="text-base sm:text-lg font-semibold mb-1.5">微信扫码关注</h3>
-        <p class="text-text-dim text-sm leading-relaxed">每日推送直达，不错过任何重要资讯</p>
+    <!-- Top: Quick Links + WeChat -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-border">
+      <!-- Content -->
+      <div>
+        <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{t("nav.industry", locale)}</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${prefix}/daily`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("nav.daily", locale)}</a></li>
+          <li><a href={`${prefix}/weekly`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("nav.weekly", locale)}</a></li>
+          <li><a href={`${prefix}/topics`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("nav.topics", locale)}</a></li>
+        </ul>
+      </div>
+      <!-- Rankings -->
+      <div>
+        <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{t("nav.rankings", locale)}</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${prefix}/ai/tools/coding`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("rankings.categories.coding", locale)}</a></li>
+          <li><a href={`${prefix}/ai/tools/writing`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("rankings.categories.writing", locale)}</a></li>
+          <li><a href={`${prefix}/ai/tools/agent`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("rankings.categories.agent", locale)}</a></li>
+        </ul>
+      </div>
+      <!-- More -->
+      <div class="hidden sm:block">
+        <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{locale === "en" ? "More" : "更多"}</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${prefix}/search`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("nav.search", locale)}</a></li>
+          <li><a href="https://github.com/doocs/awesome-ai" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">{locale === "en" ? "Contribute" : "贡献"}</a></li>
+          <li><a href="https://github.com/doocs/awesome-ai/blob/main/LICENSE" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">MIT License</a></li>
+        </ul>
+      </div>
+      <!-- WeChat (spans 2 cols on lg) -->
+      <div class="col-span-2 lg:col-span-2 flex items-center gap-4 sm:gap-5">
+        <img
+          src={wechatQr.src}
+          alt="WeChat QR"
+          class="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover shadow-[0_4px_20px_rgba(99,102,241,0.08)] border border-border flex-shrink-0"
+          loading="lazy"
+        />
+        <div>
+          <h4 class="text-sm font-semibold mb-1">{locale === "en" ? "Follow on WeChat" : "微信扫码关注"}</h4>
+          <p class="text-text-dim text-xs leading-relaxed">{locale === "en" ? "Daily updates delivered to your chat" : "每日推送直达，不错过重要资讯"}</p>
+        </div>
       </div>
     </div>
-    <!-- Copyright -->
-    <p class="text-center text-xs sm:text-sm text-text-muted">
-      Copyright &copy; <span id="footer-year"></span> <a href="https://github.com/doocs" class="text-accent-light no-underline hover:underline" target="_blank" rel="noopener">Doocs</a>
-      · Licensed under <a href="https://github.com/doocs/awesome-ai/blob/main/LICENSE" class="text-accent-light no-underline hover:underline" target="_blank" rel="noopener">MIT License</a>
-    </p>
+    <!-- Bottom -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted">
+      <p class="text-center sm:text-left">
+        {locale === "en" ? "Extracting real signals from the AI noise" : "不做信息搬运工，只做有价值的筛选和分析"}
+      </p>
+      <p>
+        Copyright &copy; <span id="footer-year"></span> <a href="https://github.com/doocs" class="text-accent-light no-underline hover:underline" target="_blank" rel="noopener">Doocs</a>
+      </p>
+    </div>
   </div>
 </footer>
 <script>
