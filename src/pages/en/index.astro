@@ -101,13 +101,13 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
       <SectionHeader title={t("home.section_latest", "en")} href="/en/industry" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {latestDaily && (
-          <Card type={latestDaily.type} title={latestDaily.title} date={latestDaily.date} summary={latestDaily.summary} tags={latestDaily.tags} href={latestDaily.href} featured locale="en" />
+          <Card type={latestDaily.type} title={latestDaily.title} date={latestDaily.date} summary={latestDaily.summary} tags={latestDaily.tags} href={latestDaily.href} locale="en" />
         )}
         {latestWeekly && (
-          <Card type={latestWeekly.type} title={latestWeekly.title} date={latestWeekly.date} summary={latestWeekly.summary} tags={latestWeekly.tags} href={latestWeekly.href} featured locale="en" />
+          <Card type={latestWeekly.type} title={latestWeekly.title} date={latestWeekly.date} summary={latestWeekly.summary} tags={latestWeekly.tags} href={latestWeekly.href} locale="en" />
         )}
         {latestTopic && (
-          <Card type={latestTopic.type} title={latestTopic.title} date={latestTopic.date} summary={latestTopic.summary} tags={latestTopic.tags} href={latestTopic.href} featured locale="en" />
+          <Card type={latestTopic.type} title={latestTopic.title} date={latestTopic.date} summary={latestTopic.summary} tags={latestTopic.tags} href={latestTopic.href} locale="en" />
         )}
       </div>
     </section>

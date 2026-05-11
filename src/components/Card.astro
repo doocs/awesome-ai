@@ -7,11 +7,11 @@ interface Props {
   tags?: string[];
   href: string;
   locale?: "zh" | "en";
-  featured?: boolean;
 }
 
-const { type, title, date, summary, tags = [], href, locale = "zh", featured = false } = Astro.props;
+const { type, title, date, summary, tags = [], href, locale = "zh" } = Astro.props;
 import { t } from "../i18n/utils.ts";
+
 const badgeMap: Record<string, string> = {
   daily: t("badge.daily", locale),
   weekly: t("badge.weekly", locale),
@@ -24,27 +24,24 @@ const badgeColorMap = {
 };
 const badgeText = badgeMap[type];
 const badgeClass = badgeColorMap[type];
-const sizeClass = featured
-  ? "p-5 sm:p-7 border-2 border-accent/30"
-  : "p-4 sm:p-6";
 ---
 
 <a href={href}
-   class={`block bg-bg-card rounded-xl sm:rounded-2xl hover:bg-bg-hover hover:border-accent hover:-translate-y-0.5 transition-all duration-250 shadow-[0_8px_30px_rgba(99,102,241,0)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] no-underline animate-fade-in border border-border ${sizeClass}`}>
+   class="block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-bg-hover hover:border-accent hover:-translate-y-0.5 transition-all duration-250 shadow-[0_8px_30px_rgba(99,102,241,0)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] no-underline animate-fade-in border border-border">
   <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
     <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${badgeClass}`}>
       {badgeText}
     </span>
     <span class="text-text-muted text-xs sm:text-sm">{date}</span>
   </div>
-  <h2 class={`font-semibold mb-1.5 sm:mb-2 ${featured ? "text-lg sm:text-xl" : "text-base sm:text-lg"} line-clamp-2`}>{title}</h2>
+  <h2 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 line-clamp-2">{title}</h2>
   {summary && (
     <p class="text-text-dim text-xs sm:text-sm line-clamp-2">{summary}</p>
   )}
   {tags.length > 0 && (
-    <div class="flex gap-1.5 sm:gap-2 mt-2.5 sm:mt-3.5 flex-wrap">
+    <div class="flex gap-1.5 sm:gap-2 mt-2.5 sm:mt-3.5 overflow-hidden">
       {tags.map(tag => (
-        <span class="text-[11px] sm:text-xs text-text-muted bg-white/[0.04] px-2 sm:px-2.5 py-1 rounded-full">{tag}</span>
+        <span class="whitespace-nowrap flex-shrink-0 text-[11px] sm:text-xs text-text-muted bg-white/[0.04] px-2 sm:px-2.5 py-1 rounded-full">{tag}</span>
       ))}
     </div>
   )}
