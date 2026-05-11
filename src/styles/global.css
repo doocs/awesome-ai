@@ -3,6 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light mode (default) */
+  :root {
+    --bg: #ffffff;
+    --bg-card: #f8f9fb;
+    --bg-hover: #eef0f4;
+    --bg-nav: rgba(255, 255, 255, 0.85);
+    --border: #e5e7eb;
+    --text: #1a1a2e;
+    --text-dim: #6b7280;
+    --text-muted: #9ca3af;
+    --code-bg: rgba(0, 0, 0, 0.06);
+    --pre-bg: #f3f4f6;
+  }
+
+  /* Dark mode */
+  .dark {
+    --bg: #0a0a0f;
+    --bg-card: #12121a;
+    --bg-hover: #1a1a25;
+    --bg-nav: rgba(10, 10, 15, 0.85);
+    --border: #1e1e2e;
+    --text: #e2e2e8;
+    --text-dim: #7a7a8e;
+    --text-muted: #4a4a5e;
+    --code-bg: rgba(255, 255, 255, 0.06);
+    --pre-bg: #0d0d14;
+  }
+
   * {
     @apply border-border;
   }
@@ -16,6 +44,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   ::-webkit-scrollbar {
@@ -85,10 +114,12 @@
     @apply m-0;
   }
   .prose-custom code {
-    @apply bg-white/[0.06] px-1.5 sm:px-2 py-0.5 rounded text-xs sm:text-sm font-mono;
+    @apply px-1.5 sm:px-2 py-0.5 rounded text-xs sm:text-sm font-mono;
+    background-color: var(--code-bg);
   }
   .prose-custom pre {
-    @apply bg-[#0d0d14] border border-border rounded-xl p-3 sm:p-5 overflow-x-auto my-4 sm:my-5 text-xs sm:text-sm;
+    @apply border border-border rounded-xl p-3 sm:p-5 overflow-x-auto my-4 sm:my-5 text-xs sm:text-sm;
+    background-color: var(--pre-bg);
   }
   .prose-custom pre code {
     @apply bg-transparent p-0;
@@ -113,7 +144,8 @@
     @apply border border-border px-3 sm:px-4 py-2 sm:py-2.5 text-left;
   }
   .prose-custom th {
-    @apply bg-white/[0.03] font-semibold;
+    font-weight: 600;
+    background-color: var(--code-bg);
   }
   .prose-custom img {
     @apply max-w-full rounded-xl;

@@ -21,13 +21,26 @@ const { title, description, locale, currentPath } = Astro.props;
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <title>{title} | Awesome AI</title>
     <meta name="description" content={description || title} />
-    
+    <!-- Theme init: must run before render to prevent flash -->
+    <script is:inline>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'light' || (stored !== 'dark' && !prefersDark)) {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <!-- Mermaid Diagram Support -->
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ theme: 'dark', securityLevel: 'loose' });
       
       document.addEventListener('DOMContentLoaded', async () => {
+        var isDark = document.documentElement.classList.contains('dark');
+        mermaid.initialize({ theme: isDark ? 'dark' : 'default', securityLevel: 'loose' });
+        
         const pres = document.querySelectorAll('pre[data-language="mermaid"]');
         for (const pre of pres) {
           const rawText = pre.textContent;
@@ -36,7 +49,7 @@ const { title, description, locale, currentPath } = Astro.props;
           div.textContent = rawText;
           pre.replaceWith(div);
         }
-        await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+        try { await mermaid.run({ nodes: document.querySelectorAll('.mermaid') }); } catch (e) {}
       });
     </script>
   </head>

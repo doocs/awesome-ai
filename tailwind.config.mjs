@@ -6,16 +6,16 @@ export default {
     extend: {
       colors: {
         bg: {
-          DEFAULT: '#0a0a0f',
-          card: '#12121a',
-          hover: '#1a1a25',
-          nav: 'rgba(10, 10, 15, 0.85)',
+          DEFAULT: 'var(--bg)',
+          card: 'var(--bg-card)',
+          hover: 'var(--bg-hover)',
+          nav: 'var(--bg-nav)',
         },
-        border: '#1e1e2e',
+        border: 'var(--border)',
         text: {
-          DEFAULT: '#e2e2e8',
-          dim: '#7a7a8e',
-          muted: '#4a4a5e',
+          DEFAULT: 'var(--text)',
+          dim: 'var(--text-dim)',
+          muted: 'var(--text-muted)',
         },
         accent: {
           DEFAULT: '#6366f1',
