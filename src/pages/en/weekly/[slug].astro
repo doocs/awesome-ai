@@ -29,9 +29,23 @@ function formatWeekDate(weekStr: string): string {
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <title>{post.data.title} | Awesome AI</title>
     <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-    </script>
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ theme: 'dark', securityLevel: 'loose' });
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    const codeBlocks = document.querySelectorAll('code.language-mermaid');
+    for (const code of codeBlocks) {
+      const pre = code.parentElement;
+      if (pre && pre.tagName === 'PRE') {
+        const diagram = document.createElement('div');
+        diagram.className = 'mermaid';
+        diagram.textContent = code.textContent;
+        pre.replaceWith(diagram);
+      }
+    }
+    await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+  });
+</script>
   </head>
   <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
     <NavBar locale="en" currentPath="/en/weekly" />
