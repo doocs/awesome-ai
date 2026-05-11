@@ -2,7 +2,7 @@
 
 > 从海量 AI 资讯中提取真正有价值的信号
 
-**网站地址：** [https://ai-pulse.doocs.org/](https://ai-pulse.doocs.org/)
+**网站地址：** [https://ai.doocs.org/](https://ai.doocs.org/)
 
 AI Pulse 是一个 AI 行业资讯聚合站点，提供双语（中文/英文）的日报、周报、专题讨论，以及 AI 工具推荐和全球模型排行榜。
 
@@ -23,13 +23,13 @@ AI Pulse 是一个 AI 行业资讯聚合站点，提供双语（中文/英文）
 
 | 领域 | 链接 |
 |------|------|
-| 编程开发 | [/ai/tools/coding](https://ai-pulse.doocs.org/ai/tools/coding) |
-| 内容写作 | [/ai/tools/writing](https://ai-pulse.doocs.org/ai/tools/writing) |
-| 设计视觉 | [/ai/tools/design](https://ai-pulse.doocs.org/ai/tools/design) |
-| 视频生成 | [/ai/tools/video](https://ai-pulse.doocs.org/ai/tools/video) |
-| 音频语音 | [/ai/tools/audio](https://ai-pulse.doocs.org/ai/tools/audio) |
-| 数据分析 | [/ai/tools/data](https://ai-pulse.doocs.org/ai/tools/data) |
-| Agent 平台 | [/ai/tools/agent](https://ai-pulse.doocs.org/ai/tools/agent) |
+| 编程开发 | [/ai/tools/coding](https://ai.doocs.org/ai/tools/coding) |
+| 内容写作 | [/ai/tools/writing](https://ai.doocs.org/ai/tools/writing) |
+| 设计视觉 | [/ai/tools/design](https://ai.doocs.org/ai/tools/design) |
+| 视频生成 | [/ai/tools/video](https://ai.doocs.org/ai/tools/video) |
+| 音频语音 | [/ai/tools/audio](https://ai.doocs.org/ai/tools/audio) |
+| 数据分析 | [/ai/tools/data](https://ai.doocs.org/ai/tools/data) |
+| Agent 平台 | [/ai/tools/agent](https://ai.doocs.org/ai/tools/agent) |
 
 ### 模型排行
 
@@ -37,10 +37,10 @@ AI Pulse 是一个 AI 行业资讯聚合站点，提供双语（中文/英文）
 
 | 排行榜 | 基准测试 | 链接 |
 |--------|----------|------|
-| 综合排行 | LMSYS Chatbot Arena, MMLU-Pro, IFEval | [/ai/models/arena](https://ai-pulse.doocs.org/ai/models/arena) |
-| 代码能力 | SWE-bench Verified, BigCodeBench, LiveCodeBench | [/ai/models/coding](https://ai-pulse.doocs.org/ai/models/coding) |
-| 推理能力 | AIME, GPQA Diamond, LiveBench | [/ai/models/reasoning](https://ai-pulse.doocs.org/ai/models/reasoning) |
-| 多模态 | MMMU, MathVista, MMBench | [/ai/models/multimodal](https://ai-pulse.doocs.org/ai/models/multimodal) |
+| 综合排行 | LMSYS Chatbot Arena, MMLU-Pro, IFEval | [/ai/models/arena](https://ai.doocs.org/ai/models/arena) |
+| 代码能力 | SWE-bench Verified, BigCodeBench, LiveCodeBench | [/ai/models/coding](https://ai.doocs.org/ai/models/coding) |
+| 推理能力 | AIME, GPQA Diamond, LiveBench | [/ai/models/reasoning](https://ai.doocs.org/ai/models/reasoning) |
+| 多模态 | MMMU, MathVista, MMBench | [/ai/models/multimodal](https://ai.doocs.org/ai/models/multimodal) |
 
 ## 多语言
 
@@ -48,8 +48,8 @@ AI Pulse 是一个 AI 行业资讯聚合站点，提供双语（中文/英文）
 
 | 语言 | README | 网站 |
 |------|--------|------|
-| 中文 | [README.md](./README.md) | [ai-pulse.doocs.org](https://ai-pulse.doocs.org/) |
-| English | [README_EN.md](./README_EN.md) | [ai-pulse.doocs.org/en/](https://ai-pulse.doocs.org/en/) |
+| 中文 | [README.md](./README.md) | [ai.doocs.org](https://ai.doocs.org/) |
+| English | [README_EN.md](./README_EN.md) | [ai.doocs.org/en/](https://ai.doocs.org/en/) |
 
 ## 项目结构
 
@@ -93,12 +93,12 @@ src/
 
 | 类型 | 日期 | 链接 |
 |------|------|------|
-| 日报 | 2026-05-11 | [中文](https://ai-pulse.doocs.org/daily/2026-05-11) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-11) |
-| 日报 | 2026-05-10 | [中文](https://ai-pulse.doocs.org/daily/2026-05-10) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-10) |
-| 日报 | 2026-05-09 | [中文](https://ai-pulse.doocs.org/daily/2026-05-09) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-09) |
-| 周报 | 2026-W19 | [中文](https://ai-pulse.doocs.org/weekly/2026-w19) / [English](https://ai-pulse.doocs.org/en/weekly/2026-w19) |
-| 专题 | AGI 品牌重塑 | [中文](https://ai-pulse.doocs.org/topics/agi-rebranding-exodus) / [English](https://ai-pulse.doocs.org/en/topics/agi-rebranding-exodus) |
-| 专题 | GitHub Agent 项目 | [中文](https://ai-pulse.doocs.org/topics/github-agent-projects) / [English](https://ai-pulse.doocs.org/en/topics/github-agent-projects) |
-| 专题 | Vibe Coding 争议 | [中文](https://ai-pulse.doocs.org/topics/vibe-coding-debate) / [English](https://ai-pulse.doocs.org/en/topics/vibe-coding-debate) |
+| 日报 | 2026-05-11 | [中文](https://ai.doocs.org/daily/2026-05-11) / [English](https://ai.doocs.org/en/daily/2026-05-11) |
+| 日报 | 2026-05-10 | [中文](https://ai.doocs.org/daily/2026-05-10) / [English](https://ai.doocs.org/en/daily/2026-05-10) |
+| 日报 | 2026-05-09 | [中文](https://ai.doocs.org/daily/2026-05-09) / [English](https://ai.doocs.org/en/daily/2026-05-09) |
+| 周报 | 2026-W19 | [中文](https://ai.doocs.org/weekly/2026-w19) / [English](https://ai.doocs.org/en/weekly/2026-w19) |
+| 专题 | AGI 品牌重塑 | [中文](https://ai.doocs.org/topics/agi-rebranding-exodus) / [English](https://ai.doocs.org/en/topics/agi-rebranding-exodus) |
+| 专题 | GitHub Agent 项目 | [中文](https://ai.doocs.org/topics/github-agent-projects) / [English](https://ai.doocs.org/en/topics/github-agent-projects) |
+| 专题 | Vibe Coding 争议 | [中文](https://ai.doocs.org/topics/vibe-coding-debate) / [English](https://ai.doocs.org/en/topics/vibe-coding-debate) |
 
 
