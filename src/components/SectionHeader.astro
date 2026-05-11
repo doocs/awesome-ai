@@ -7,9 +7,11 @@ interface Props {
   title: string;
   href: string;
   accentColor?: "accent" | "pink";
+  locale?: "zh" | "en";
 }
 
-const { title, href, accentColor = "accent" } = Astro.props;
+const { title, href, accentColor = "accent", locale = "zh" } = Astro.props;
+import { t } from "../i18n/utils.ts";
 const accentClass = accentColor === "pink" ? "bg-pink" : "bg-accent";
 ---
 
@@ -19,6 +21,6 @@ const accentClass = accentColor === "pink" ? "bg-pink" : "bg-accent";
     {title}
   </h2>
   <a href={href} class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">
-    <slot name="more">更多 →</slot>
+    <slot name="more">{t("home.more", locale)}</slot>
   </a>
 </div>

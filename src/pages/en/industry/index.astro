@@ -6,7 +6,7 @@ import Card from "../../../components/Card.astro";
 import "../../../styles/global.css";
 import { t } from "../../../i18n/utils.ts";
 import { getCollection } from "astro:content";
-import { extractSummary, extractTags, TAG_MAP_EN } from "../../../lib/content.ts";
+import { extractSummary, extractTags, TAG_MAP_EN, formatWeekDateEn } from "../../../lib/content.ts";
 
 const allEn = await getCollection("en");
 const allDaily = allEn.filter((e) => e.id.startsWith("daily/"));
@@ -27,10 +27,10 @@ const items = [
     href: `/en/${a.id.replace(".md", "")}`,
   })),
   ...allWeekly.map(a => ({
-    type: "weekly" as const,
-    title: a.data.title,
-    date: a.data.date,
-    dateRaw: a.data.date,
+      type: "weekly" as const,
+      title: a.data.title,
+      date: formatWeekDateEn(a.data.date),
+      dateRaw: a.data.date,
     summary: extractSummary(a.body),
     tags: extractTags(a.body, TAG_MAP_EN),
     href: `/en/${a.id.replace(".md", "")}`,

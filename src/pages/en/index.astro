@@ -4,7 +4,7 @@ import Card from "../../components/Card.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import { t } from "../../i18n/utils.ts";
 import { getCollection } from "astro:content";
-import { extractSummary, extractTags, TAG_MAP_EN, formatDateCn } from "../../lib/content.ts";
+import { extractSummary, extractTags, TAG_MAP_EN, formatWeekDateEn } from "../../lib/content.ts";
 
 const allEn = await getCollection("en");
 const allDaily = allEn.filter((e) => e.id.startsWith("daily/"));
@@ -22,7 +22,7 @@ function buildCard(article: any, type: "daily" | "weekly") {
   return {
     type,
     title: article.data.title,
-    date: formatDateCn(article.data.date),
+    date: type === "weekly" ? formatWeekDateEn(article.data.date) : article.data.date,
     summary: extractSummary(article.body),
     tags: extractTags(article.body, TAG_MAP_EN),
     href: `/en/${article.id.replace(".md", "")}`,
@@ -98,7 +98,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Latest Three -->
   {(latestDaily || latestWeekly || latestTopic) && (
     <section class="mt-8 sm:mt-12">
-      <SectionHeader title={t("home.section_latest", "en")} href="/en/industry" />
+      <SectionHeader title={t("home.section_latest", "en")} href="/en/industry" locale="en" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {latestDaily && (
           <Card type={latestDaily.type} title={latestDaily.title} date={latestDaily.date} summary={latestDaily.summary} tags={latestDaily.tags} href={latestDaily.href} locale="en" />
@@ -116,7 +116,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Industry News (Daily + Weekly combined) -->
   {(recentDaily.length > 0 || recentWeekly.length > 0) && (
     <section class="mt-10 sm:mt-14">
-      <SectionHeader title={t("home.section_industry", "en")} href="/en/industry" />
+      <SectionHeader title={t("home.section_industry", "en")} href="/en/industry" locale="en" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {[...recentDaily.map((item) => ({ ...item, type: "daily" as const })), ...recentWeekly.map((item) => ({ ...item, type: "weekly" as const }))]
           .sort((a, b) => b.date.localeCompare(a.date))
@@ -131,7 +131,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Recent Discussions -->
   {recentTopics.length > 0 && (
     <section class="mt-10 sm:mt-14">
-      <SectionHeader title={t("home.section_discussions", "en")} href="/en/topics" accentColor="pink" />
+      <SectionHeader title={t("home.section_discussions", "en")} href="/en/topics" accentColor="pink" locale="en" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {recentTopics.map((item) => (
           <Card type={item.type} title={item.title} date={item.date} summary={item.summary} tags={item.tags} href={item.href} locale="en" />
