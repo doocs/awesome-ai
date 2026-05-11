@@ -13,7 +13,7 @@ const sorted = allTopics.sort((a, b) => b.data.date.localeCompare(a.data.date));
 
 ---
 
-<Head title={t("page.title_topics", "en")} lang="en">
+<Head title={`${t("page.title_topics", "en")} | Awesome AI`} lang="en">
   <NavBar locale="en" currentPath="/en/topics" />
     <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
       <h1 class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{t("page.topics_label", "en")}</h1>

@@ -52,6 +52,7 @@
     "model": "模型排行"
   },
   "page": {
+    "title_home": "首页",
     "title_daily": "日报",
     "title_weekly": "周报",
     "title_industry": "行业动态",

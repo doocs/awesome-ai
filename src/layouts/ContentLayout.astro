@@ -14,7 +14,7 @@ export interface Props {
 const { title, description, locale, currentPath } = Astro.props;
 ---
 
-<Head title={title} description={description || title} lang={locale}>
+<Head title={`${title} | Awesome AI`} description={description || title} lang={locale}>
   <slot name="extra">
     <!-- Mermaid Diagram Support -->
     <script type="module">

@@ -52,6 +52,7 @@
     "model": "Model"
   },
   "page": {
+    "title_home": "Home",
     "title_daily": "Daily",
     "title_weekly": "Weekly",
     "title_industry": "Industry News",
