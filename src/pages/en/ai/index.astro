@@ -41,6 +41,17 @@ function getModelBySlug(slug) {
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <title>AI Rankings | Awesome AI</title>
     <meta name="description" content="AI tool recommendations + model benchmarks" />
+    <script is:inline>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'light' || (stored !== 'dark' && !prefersDark)) {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
     <NavBar locale="en" currentPath="/en/ai" />
