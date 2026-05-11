@@ -36,10 +36,15 @@ const prefix = locale === "en" ? "/en" : "";
       <div>
         <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{locale === "en" ? "Contact" : "联系作者"}</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="mailto:contact@yanglibin.info" class="text-text-dim hover:text-accent-light transition-colors no-underline">contact@yanglibin.info</a></li>
-          <li><span class="text-text-dim">WeChat: YLB0109</span></li>
-          <li><a href="https://github.com/yanglbme" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">github.com/yanglbme</a></li>
+          <li><a href="mailto:contact@yanglibin.info" class="text-text-dim hover:text-accent-light transition-colors no-underline">{locale === "en" ? "Email" : "邮箱"}</a></li>
+          <li><button id="wechat-btn" class="text-text-dim hover:text-accent-light transition-colors no-underline bg-transparent border-0 p-0 cursor-pointer font-inherit">{locale === "en" ? "WeChat" : "微信"}</button></li>
+          <li><a href="https://github.com/yanglbme" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">GitHub</a></li>
         </ul>
+        <!-- WeChat ID tooltip -->
+        <div id="wechat-tooltip" class="hidden mt-2 bg-bg-card border border-border rounded-lg px-3 py-2 text-sm shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
+          <span class="text-text-dim">{locale === "en" ? "WeChat ID" : "微信号"}: <span class="text-accent-light font-mono font-semibold select-all">YLB0109</span></span>
+          <span id="wechat-copy-hint" class="text-xs text-green ml-2 hidden">已复制</span>
+        </div>
       </div>
       <!-- More -->
       <div>
@@ -77,4 +82,33 @@ const prefix = locale === "en" ? "/en" : "";
 </footer>
 <script>
   document.getElementById("footer-year").textContent = new Date().getFullYear();
+
+  // WeChat ID tooltip
+  const wechatBtn = document.getElementById("wechat-btn");
+  const wechatTooltip = document.getElementById("wechat-tooltip");
+  const wechatCopyHint = document.getElementById("wechat-copy-hint");
+
+  if (wechatBtn && wechatTooltip) {
+    wechatBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Toggle tooltip
+      wechatTooltip.classList.toggle("hidden");
+      if (!wechatTooltip.classList.contains("hidden")) {
+        // Copy to clipboard
+        navigator.clipboard.writeText("YLB0109").then(function () {
+          wechatCopyHint.classList.remove("hidden");
+          setTimeout(function () {
+            wechatCopyHint.classList.add("hidden");
+          }, 2000);
+        });
+      }
+    });
+
+    // Close tooltip when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!wechatTooltip.classList.contains("hidden") && !wechatTooltip.contains(e.target) && e.target !== wechatBtn) {
+        wechatTooltip.classList.add("hidden");
+      }
+    });
+  }
 </script>
