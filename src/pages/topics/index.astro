@@ -5,20 +5,11 @@ import Footer from "../../components/Footer.astro";
 import "../../styles/global.css";
 import { t } from "../../i18n/utils.ts";
 import { getCollection } from "astro:content";
+import { extractSummary } from "../../lib/content.ts";
 
 const allTopics = await getCollection("topics");
 const sorted = allTopics.sort((a, b) => b.data.date.localeCompare(a.data.date));
 
-function extractSummary(content: string): string {
-  const lines = content.split("\n");
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && !trimmed.startsWith("*") && trimmed.length > 20) {
-      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
-    }
-  }
-  return "";
-}
 ---
 
 <Head title={t("page.title_topics")} lang="zh">

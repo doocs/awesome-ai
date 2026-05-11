@@ -1,0 +1,79 @@
+---
+/**
+ * Rankings page hero: title + description + tools/models tab switcher + category grid.
+ * Used by both zh and en versions of /ai and /en/ai.
+ */
+interface Props {
+  title: string;
+  description: string;
+  locale: "zh" | "en";
+  tabTools: string;
+  tabModels: string;
+  categories: { name: string; href: string }[];
+  modelCategories: { name: string; href: string }[];
+  toolData?: { last_updated?: string; summary?: string }[];
+  modelData?: { last_updated?: string; summary?: string }[];
+}
+
+const { title, description, locale, tabTools, tabModels, categories, modelCategories } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+const lastUpdatedLabel = locale === "en" ? "Updated" : "更新于";
+---
+
+<!-- Hero -->
+<div class="text-center mb-8 sm:mb-12">
+  <h1 class="text-3xl sm:text-4xl font-bold mb-3">{title}</h1>
+  <p class="text-text-dim text-base sm:text-lg max-w-2xl mx-auto">{description}</p>
+</div>
+
+<!-- Tabs -->
+<div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
+  <button id="tab-tools" class="tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all bg-accent-glow text-text border border-accent" onclick="switchTab('tools')">{tabTools}</button>
+  <button id="tab-models" class="tab-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all text-text-dim border border-border hover:text-text hover:bg-accent-glow" onclick="switchTab('models')">{tabModels}</button>
+</div>
+
+<!-- Tools Section -->
+<div id="section-tools" class="tab-section">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+    {categories.map((cat, i) => (
+      <a href={cat.href} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline">
+        <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+        <p class="text-text-dim text-xs line-clamp-2">{cat.summary || ""}</p>
+        {cat.last_updated && (
+          <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{lastUpdatedLabel}: {cat.last_updated}</div>
+        )}
+      </a>
+    ))}
+  </div>
+</div>
+
+<!-- Models Section -->
+<div id="section-models" class="tab-section hidden">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+    {modelCategories.map((cat, i) => (
+      <a href={cat.href} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline text-center">
+        <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+        <p class="text-text-dim text-xs line-clamp-2">{cat.summary || ""}</p>
+        {cat.last_updated && (
+          <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{lastUpdatedLabel}: {cat.last_updated}</div>
+        )}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.classList.remove('active', 'bg-accent-glow', 'text-text', 'border-accent');
+      btn.classList.add('text-text-dim', 'border-border');
+    });
+    document.querySelectorAll('.tab-section').forEach(function(sec) {
+      sec.classList.add('hidden');
+    });
+    var activeBtn = document.getElementById('tab-' + tab);
+    activeBtn.classList.add('active', 'bg-accent-glow', 'text-text', 'border-accent');
+    activeBtn.classList.remove('text-text-dim', 'border-border');
+    document.getElementById('section-' + tab).classList.remove('hidden');
+  }
+</script>

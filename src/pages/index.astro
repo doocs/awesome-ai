@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import { t } from "../i18n/utils.ts";
+import { extractSummary, extractTags, formatDateCn, TAG_MAP_ZH } from "../lib/content.ts";
 import { getCollection } from "astro:content";
 
 const allDaily = await getCollection("daily");
@@ -12,56 +14,16 @@ const dailyList = [...allDaily].sort((a, b) => b.data.date.localeCompare(a.data.
 const weeklyList = [...allWeekly].sort((a, b) => b.data.date.localeCompare(a.data.date));
 const topicsList = [...allTopics].sort((a, b) => b.data.date.localeCompare(a.data.date));
 
-function formatDate(dateStr: string, type: "daily" | "weekly"): string {
-  if (type === "weekly") return dateStr.replace("-w", " 年第 ") + " 周";
-  const parts = dateStr.split("-");
-  return `${parts[0]} 年 ${parseInt(parts[1])} 月 ${parseInt(parts[2])} 日`;
-}
 
-function extractSummary(content: string): string {
-  const lines = content.split("\n");
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && !trimmed.startsWith("*") && trimmed.length > 20) {
-      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
-    }
-  }
-  return "";
-}
 
-function extractTags(content: string): string[] {
-  const tags: string[] = [];
-  const lower = content.toLowerCase();
-  const tagMap: Record<string, string[]> = {
-    "openai": ["openai", "gpt"],
-    "Google": ["google", "deepmind", "gemini"],
-    "Anthropic": ["anthropic", "claude"],
-    "百度": ["百度", "文心"],
-    "DeepSeek": ["deepseek"],
-    "字节": ["字节", "tiktok"],
-    "NVIDIA": ["英伟达", "nvidia"],
-    "机器人": ["机器人", "robot"],
-    "AI 视频": ["视频", "veo"],
-    "融资": ["融资"],
-    "Agent": ["agent", "智能体"],
-  };
-  for (const [tag, keywords] of Object.entries(tagMap)) {
-    if (keywords.some((kw) => lower.includes(kw))) {
-      tags.push(tag);
-    }
-    if (tags.length >= 4) break;
-  }
-  if (tags.length === 0) tags.push("AI");
-  return tags;
-}
 
 function buildCard(article: any, type: "daily" | "weekly") {
   return {
     type,
     title: article.data.title,
-    date: formatDate(article.data.date, type),
+    date: formatDateCn(article.data.date),
     summary: extractSummary(article.body),
-    tags: extractTags(article.body),
+    tags: extractTags(article.body, TAG_MAP_ZH),
     href: `/${article.collection}/${article.id.replace(".md", "")}`,
   };
 }
@@ -135,10 +97,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Latest Three -->
   {(latestDaily || latestWeekly || latestTopic) && (
     <section class="mt-8 sm:mt-12">
-      <h2 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-5 flex items-center gap-2">
-        <span class="w-1 h-5 bg-accent rounded-full"></span>
-        {t("home.section_latest")}
-      </h2>
+      <SectionHeader title={t("home.section_latest")} href="/industry" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {latestDaily && (
           <Card
@@ -180,13 +139,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Industry News (Daily + Weekly combined) -->
   {(recentDaily.length > 0 || recentWeekly.length > 0) && (
     <section class="mt-10 sm:mt-14">
-      <div class="flex items-center justify-between mb-4 sm:mb-5">
-        <h2 class="text-lg sm:text-xl font-semibold flex items-center gap-2">
-          <span class="w-1 h-5 bg-accent rounded-full"></span>
-          {t("home.section_industry")}
-        </h2>
-        <a href="/industry" class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">{t("home.more")}</a>
-      </div>
+      <SectionHeader title={t("home.section_industry")} href="/industry" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {[...recentDaily.map((item) => ({ ...item, type: "daily" as const })), ...recentWeekly.map((item) => ({ ...item, type: "weekly" as const }))]
           .sort((a, b) => b.date.localeCompare(a.date))
@@ -208,13 +161,7 @@ const recentTopics = topicsList.slice(1, 4).map((a) => ({
   <!-- Recent Discussions -->
   {recentTopics.length > 0 && (
     <section class="mt-10 sm:mt-14">
-      <div class="flex items-center justify-between mb-4 sm:mb-5">
-        <h2 class="text-lg sm:text-xl font-semibold flex items-center gap-2">
-          <span class="w-1 h-5 bg-pink rounded-full"></span>
-          {t("home.section_discussions")}
-        </h2>
-        <a href="/topics" class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">{t("home.more")}</a>
-      </div>
+      <SectionHeader title={t("home.section_discussions")} href="/topics" accentColor="pink" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {recentTopics.map((item) => (
           <Card

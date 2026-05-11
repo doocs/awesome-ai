@@ -6,71 +6,33 @@ import Card from "../../../components/Card.astro";
 import "../../../styles/global.css";
 import { t } from "../../../i18n/utils.ts";
 import { getCollection } from "astro:content";
+import { extractSummary, extractTags, TAG_MAP_EN } from "../../../lib/content.ts";
 
 const allEn = await getCollection("en");
 const allDaily = allEn.filter((e) => e.id.startsWith("daily/"));
 const allWeekly = allEn.filter((e) => e.id.startsWith("weekly/"));
 
-function formatDailyDate(dateStr: string): string {
-  return dateStr;
-}
 
-function formatWeeklyDate(dateStr: string): string {
-  return dateStr.replace("-w", " Week ");
-}
 
-function extractSummary(content: string): string {
-  const lines = content.split("\n");
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && trimmed.length > 20) {
-      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
-    }
-  }
-  return "";
-}
 
-function extractTags(content: string): string[] {
-  const tags: string[] = [];
-  const lower = content.toLowerCase();
-  const tagMap: Record<string, string[]> = {
-    "OpenAI": ["openai", "gpt"],
-    "Google": ["google", "deepmind", "gemini"],
-    "Anthropic": ["anthropic", "claude"],
-    "Baidu": ["baidu", "ernie", "文心"],
-    "DeepSeek": ["deepseek"],
-    "ByteDance": ["bytedance", "tiktok", "字节"],
-    "NVIDIA": ["nvidia", "英伟达"],
-    "Robotics": ["robot", "机器人"],
-    "AI Video": ["video", "veo", "视频"],
-    "Funding": ["funding", "融资"],
-    "Agent": ["agent", "智能体"],
-  };
-  for (const [tag, keywords] of Object.entries(tagMap)) {
-    if (keywords.some((kw) => lower.includes(kw))) tags.push(tag);
-    if (tags.length >= 4) break;
-  }
-  if (tags.length === 0) tags.push("AI");
-  return tags;
-}
 
 const items = [
   ...allDaily.map(a => ({
     type: "daily" as const,
     title: a.data.title,
-    date: formatDailyDate(a.data.date),
+    date: a.data.date,
     dateRaw: a.data.date,
     summary: extractSummary(a.body),
-    tags: extractTags(a.body),
+    tags: extractTags(a.body, TAG_MAP_EN),
     href: `/en/${a.id.replace(".md", "")}`,
   })),
   ...allWeekly.map(a => ({
     type: "weekly" as const,
     title: a.data.title,
-    date: formatWeeklyDate(a.data.date),
+    date: a.data.date,
     dateRaw: a.data.date,
     summary: extractSummary(a.body),
-    tags: extractTags(a.body),
+    tags: extractTags(a.body, TAG_MAP_EN),
     href: `/en/${a.id.replace(".md", "")}`,
   })),
 ].sort((a, b) => b.dateRaw.localeCompare(a.dateRaw));
