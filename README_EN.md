@@ -1,10 +1,10 @@
-# AI Pulse
+# Awesome AI
 
 > Extracting real signals from the noise of AI news
 
 **Website:** [https://ai.doocs.org/](https://ai.doocs.org/)
 
-AI Pulse is a static site that curates and publishes AI industry news daily and weekly, with bilingual support (Chinese and English). It also features AI tool recommendations and global model leaderboards with auto-updated data.
+Awesome AI is a static site that curates and publishes AI industry news daily and weekly, with bilingual support (Chinese and English). It also features AI tool recommendations and global model leaderboards with auto-updated data.
 
 ## Content Types
 

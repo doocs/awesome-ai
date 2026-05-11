@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "AI Pulse",
+    "name": "Awesome AI",
     "tagline": "Extracting real signals from the AI noise",
     "description": "AI Industry News Digest - Daily, Weekly & Rankings"
   },
@@ -17,7 +17,7 @@
     "search_label": "Search"
   },
   "home": {
-    "title": "AI Pulse",
+    "title": "Awesome AI",
     "tagline": "Extracting real signals from the AI noise",
     "stats_daily": "Daily",
     "stats_weekly": "Weekly",
@@ -107,6 +107,6 @@
     }
   },
   "footer": {
-    "text": "AI Pulse · Not just a news courier — real signal from the noise"
+    "text": "Awesome AI · Not just a news courier — real signal from the noise"
   }
 }

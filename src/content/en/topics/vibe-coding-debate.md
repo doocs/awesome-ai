@@ -90,4 +90,4 @@ That challenge is bigger than most people realize.
 
 ---
 
-*AI Pulse - Not an info courier, only valuable filtering and analysis*
+*Awesome AI - Not an info courier, only valuable filtering and analysis*

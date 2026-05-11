@@ -84,4 +84,4 @@ None of them solve every scenario, but each has its own place. Which one you pic
 
 ---
 
-*AI Pulse - Not an info courier, only valuable filtering and analysis*
+*Awesome AI - Not an info courier, only valuable filtering and analysis*

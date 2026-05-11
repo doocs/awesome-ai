@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "AI Pulse",
+    "name": "Awesome AI",
     "tagline": "从海量 AI 资讯中提取真正有价值的信号",
     "description": "AI 行业资讯日报 + 周报 + 排行榜"
   },
@@ -17,7 +17,7 @@
     "search_label": "搜索"
   },
   "home": {
-    "title": "AI Pulse",
+    "title": "Awesome AI",
     "tagline": "从海量 AI 资讯中提取真正有价值的信号",
     "stats_daily": "日报",
     "stats_weekly": "周报",
@@ -107,6 +107,6 @@
     }
   },
   "footer": {
-    "text": "AI Pulse · 不做信息搬运工，只做有价值的筛选和分析"
+    "text": "Awesome AI · 不做信息搬运工，只做有价值的筛选和分析"
   }
 }

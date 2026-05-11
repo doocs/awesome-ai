@@ -74,4 +74,4 @@ The real question isn't what label AI companies will use next. It's whether the 
 
 ---
 
-*AI Pulse - No cargo-cult journalism, just signal extraction*
+*Awesome AI - No cargo-cult journalism, just signal extraction*
