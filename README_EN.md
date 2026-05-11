@@ -97,6 +97,7 @@ src/
 | Daily | 2026-05-10 | [Chinese](https://ai.doocs.org/daily/2026-05-10) / [English](https://ai.doocs.org/en/daily/2026-05-10) |
 | Daily | 2026-05-09 | [Chinese](https://ai.doocs.org/daily/2026-05-09) / [English](https://ai.doocs.org/en/daily/2026-05-09) |
 | Weekly | 2026-W19 | [Chinese](https://ai.doocs.org/weekly/2026-w19) / [English](https://ai.doocs.org/en/weekly/2026-w19) |
+| Topic | Anthropic Cowork & AI Coding Agent Wars | [Chinese](https://ai.doocs.org/topics/anthropic-cowork-coding-agent-wars) / [English](https://ai.doocs.org/en/topics/anthropic-cowork-coding-agent-wars) |
 | Topic | AGI Rebranding | [Chinese](https://ai.doocs.org/topics/agi-rebranding-exodus) / [English](https://ai.doocs.org/en/topics/agi-rebranding-exodus) |
 | Topic | GitHub Agent Projects | [Chinese](https://ai.doocs.org/topics/github-agent-projects) / [English](https://ai.doocs.org/en/topics/github-agent-projects) |
 | Topic | Vibe Coding Debate | [Chinese](https://ai.doocs.org/topics/vibe-coding-debate) / [English](https://ai.doocs.org/en/topics/vibe-coding-debate) |
