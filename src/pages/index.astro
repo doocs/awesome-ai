@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import { t } from "../i18n/utils.ts";
-import { extractSummary, extractTags, formatDateCn, TAG_MAP_ZH } from "../lib/content.ts";
+import { extractSummary, extractTags, formatDateCn, formatWeekDate, TAG_MAP_ZH } from "../lib/content.ts";
 import { getCollection } from "astro:content";
 
 const allDaily = await getCollection("daily");
@@ -21,7 +21,7 @@ function buildCard(article: any, type: "daily" | "weekly") {
   return {
     type,
     title: article.data.title,
-    date: formatDateCn(article.data.date),
+    date: type === "weekly" ? formatWeekDate(article.data.date) : formatDateCn(article.data.date),
     summary: extractSummary(article.body),
     tags: extractTags(article.body, TAG_MAP_ZH),
     href: `/${article.collection}/${article.id.replace(".md", "")}`,
