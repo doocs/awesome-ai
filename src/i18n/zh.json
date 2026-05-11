@@ -1,0 +1,112 @@
+{
+  "site": {
+    "name": "AI Pulse",
+    "tagline": "从海量 AI 资讯中提取真正有价值的信号",
+    "description": "AI 行业资讯日报 + 周报 + 排行榜"
+  },
+  "nav": {
+    "home": "首页",
+    "daily": "日报",
+    "weekly": "周报",
+    "industry": "行业动态",
+    "topics": "讨论",
+    "rankings": "排行榜",
+    "search": "搜索",
+    "lang_cn": "中文",
+    "lang_en": "EN",
+    "search_label": "搜索"
+  },
+  "home": {
+    "title": "AI Pulse",
+    "tagline": "从海量 AI 资讯中提取真正有价值的信号",
+    "stats_daily": "日报",
+    "stats_weekly": "周报",
+    "stats_total": "总期数",
+    "filter_all": "全部",
+    "filter_weekly": "周报",
+    "filter_daily": "日报",
+    "section_industry": "行业动态",
+    "section_discussions": "热门讨论",
+    "section_rankings": "热门工具",
+    "section_rankings_desc": "按领域精选，只推荐真正好用的",
+    "browse_industry": "浏览动态",
+    "browse_discussions": "浏览讨论",
+    "browse_rankings": "浏览排行榜",
+    "section_latest": "最新动态",
+    "more": "更多 →"
+  },
+  "article": {
+    "back": "返回列表",
+    "back_rankings": "← 返回排行榜",
+    "back_topics": "← 返回专题列表",
+    "published": "发布于",
+    "copy": "复制",
+    "copied": "已复制",
+    "last_updated": "最近更新"
+  },
+  "badge": {
+    "daily": "日报",
+    "weekly": "周报",
+    "discussion": "讨论",
+    "tool": "AI 工具",
+    "model": "模型排行"
+  },
+  "page": {
+    "title_daily": "日报",
+    "title_weekly": "周报",
+    "title_industry": "行业动态",
+    "title_topics": "讨论",
+    "title_rankings": "AI 排行榜",
+    "title_search": "搜索",
+    "title_tools": "AI 工具",
+    "title_models": "模型排行",
+    "topics_count": "期深度内容",
+    "topics_label": "讨论",
+    "topics_badge": "讨论"
+  },
+  "search": {
+    "title": "搜索",
+    "placeholder": "输入关键词搜索文章标题、摘要、正文...",
+    "no_results": "没有找到相关文章",
+    "results_prefix": "找到",
+    "results_suffix": "条结果"
+  },
+  "rankings": {
+    "title": "AI 排行榜",
+    "desc": "工具推荐 + 模型实力排行，帮你做对选择",
+    "tab_tools": "AI 工具",
+    "tab_models": "模型排行",
+    "last_updated": "最近更新",
+    "data_source": "数据来源",
+    "benchmarks": "评测基准",
+    "tool_rank": "排名",
+    "tool_name": "工具",
+    "tool_price": "价格",
+    "tool_highlights": "亮点",
+    "tool_oneliner": "一句话评价",
+    "model_rank": "排名",
+    "model_name": "模型",
+    "model_vendor": "厂商",
+    "model_type": "类型",
+    "model_score": "分数",
+    "view_detail": "查看详情",
+    "categories": {
+      "coding": "编程开发",
+      "writing": "内容写作",
+      "design": "设计视觉",
+      "video": "视频生成",
+      "audio": "音频语音",
+      "data": "数据分析",
+      "agent": "Agent 平台"
+    },
+    "model_categories": {
+      "arena": "综合排行",
+      "coding": "代码能力",
+      "reasoning": "推理能力",
+      "multimodal": "多模态"
+    }
+  },
+  "footer": {
+    "text": "AI Pulse · 不做信息搬运工，只做有价值的筛选和分析"
+  }
+}

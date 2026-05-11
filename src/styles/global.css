@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-muted;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply max-w-none;
+  }
+  .prose-custom h1 {
+    @apply text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight;
+  }
+  .prose-custom h2 {
+    @apply text-xl sm:text-2xl font-semibold mt-8 sm:mt-10 mb-3 sm:mb-4 pb-2 border-b border-border leading-snug;
+  }
+  .prose-custom h3 {
+    @apply text-lg sm:text-xl font-semibold mt-6 sm:mt-7 mb-2 sm:mb-3 leading-snug;
+  }
+  .prose-custom h4 {
+    @apply text-base sm:text-lg font-semibold mt-5 sm:mt-6 mb-1.5 sm:mb-2 leading-snug;
+  }
+  .prose-custom p {
+    @apply mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base;
+  }
+  .prose-custom blockquote {
+    @apply border-l-[3px] border-accent bg-accent-glow px-4 sm:px-5 py-3 sm:py-4 my-4 sm:my-5 rounded-r-xl text-text-dim text-sm sm:text-base;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .prose-custom blockquote > :first-child {
+    margin-top: 0;
+  }
+  .prose-custom blockquote > :last-child {
+    margin-bottom: 0;
+  }
+  .prose-custom ul {
+    @apply my-3 sm:my-4 pl-5 sm:pl-6;
+  }
+  .prose-custom ol {
+    @apply my-3 sm:my-4 pl-5 sm:pl-6;
+  }
+  .prose-custom ul ul,
+  .prose-custom ol ol,
+  .prose-custom ul ol,
+  .prose-custom ol ul {
+    @apply my-1.5 sm:my-2;
+  }
+  .prose-custom li {
+    @apply mb-1.5 sm:mb-2 leading-relaxed text-sm sm:text-base;
+  }
+  .prose-custom li::marker {
+    @apply text-text-dim;
+  }
+  .prose-custom li > p {
+    @apply m-0;
+  }
+  .prose-custom code {
+    @apply bg-white/[0.06] px-1.5 sm:px-2 py-0.5 rounded text-xs sm:text-sm font-mono;
+  }
+  .prose-custom pre {
+    @apply bg-[#0d0d14] border border-border rounded-xl p-3 sm:p-5 overflow-x-auto my-4 sm:my-5 text-xs sm:text-sm;
+  }
+  .prose-custom pre code {
+    @apply bg-transparent p-0;
+  }
+  .prose-custom a {
+    @apply text-accent-light underline decoration-accent-light/40 hover:decoration-accent-light transition-colors;
+  }
+  .prose-custom strong {
+    @apply font-semibold text-text;
+  }
+  .prose-custom em {
+    @apply italic text-text-dim;
+  }
+  .prose-custom hr {
+    @apply border-border my-6 sm:my-8;
+  }
+  .prose-custom table {
+    @apply w-full border-collapse my-4 sm:my-5 text-sm sm:text-base;
+  }
+  .prose-custom th,
+  .prose-custom td {
+    @apply border border-border px-3 sm:px-4 py-2 sm:py-2.5 text-left;
+  }
+  .prose-custom th {
+    @apply bg-white/[0.03] font-semibold;
+  }
+  .prose-custom img {
+    @apply max-w-full rounded-xl;
+  }
+}
+
+/* List styles — must be outside @layer to avoid Tailwind stripping */
+.prose-custom ul {
+  list-style-type: disc;
+}
+.prose-custom ol {
+  list-style-type: decimal;
+}
+.prose-custom ul ul {
+  list-style-type: circle;
+}
+.prose-custom ul ul ul {
+  list-style-type: square;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease;
+}

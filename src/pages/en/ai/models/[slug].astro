@@ -1,0 +1,69 @@
+---
+import NavBar from "../../../../components/NavBar.astro";
+import Footer from "../../../../components/Footer.astro";
+import "../../../../styles/global.css";
+import { t } from "../../../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const allEntries = await getCollection("en");
+  const posts = allEntries.filter(e => e.id.startsWith("models/"));
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/^models\//, "").replace(/\.md$/, "").replace("model-", "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{post.data.title} | AI Pulse</title>
+    <meta name="description" content={post.data.summary || post.data.title} />
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="en" currentPath="/en/ai" />
+
+    <main class="max-w-[780px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
+      <a href="/en/ai" class="inline-flex items-center gap-1.5 text-text-dim text-xs sm:text-sm mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-lg border border-border bg-bg-card hover:text-text hover:bg-accent-glow hover:border-accent transition-all no-underline">
+        {t("article.back_rankings", "en")}
+      </a>
+
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        <span class="text-2xl">{post.data.icon}</span>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-orange/10 text-orange">{t("badge.model", "en")}</span>
+        {post.data.last_updated && (
+          <span class="text-text-muted text-xs sm:text-sm">{t("article.last_updated", "en")}: {post.data.last_updated}</span>
+        )}
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 leading-tight">{post.data.title}</h1>
+
+      {post.data.data_source && (
+        <div class="flex items-center gap-2 mb-4 sm:mb-6">
+          <span class="text-xs text-text-muted">{t("rankings.data_source", "en")}:</span>
+          <a href={post.data.data_source} target="_blank" rel="noopener" class="text-xs text-accent hover:underline">{post.data.data_source}</a>
+        </div>
+      )}
+
+      {post.data.benchmarks && post.data.benchmarks.length > 0 && (
+        <div class="flex gap-2 flex-wrap mb-4 sm:mb-6">
+          {post.data.benchmarks.map(b => (
+            <span class="text-[11px] sm:text-xs text-text-muted bg-white/[0.04] px-2 sm:px-2.5 py-1 rounded-full">{b}</span>
+          ))}
+        </div>
+      )}
+
+      <article class="prose-custom">
+        <Content />
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

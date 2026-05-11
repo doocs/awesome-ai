@@ -1,13 +1,19 @@
 {
-  "devDependencies": {
-    "vitepress": "^1.6.3"
-  },
+  "name": "ai-pulse",
+  "type": "module",
+  "version": "1.0.0",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "vitepress-plugin-comment-with-giscus": "^1.1.15"
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.16.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0",
+    "tailwindcss": "^3.4.0"
   }
 }

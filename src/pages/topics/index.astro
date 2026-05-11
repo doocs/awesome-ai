@@ -1,0 +1,64 @@
+---
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/global.css";
+import { t } from "../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allTopics = await getCollection("topics");
+const sorted = allTopics.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+function extractSummary(content: string): string {
+  const lines = content.split("\n");
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && !trimmed.startsWith("*") && trimmed.length > 20) {
+      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
+    }
+  }
+  return "";
+}
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{t("page.title_topics")} | AI Pulse</title>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="zh" currentPath="/topics" />
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{t("page.topics_label")}</h1>
+      <p class="text-text-dim text-sm mb-6 sm:mb-8">{sorted.length} {t("page.topics_count")}</p>
+
+      <div class="grid gap-3 sm:gap-4">
+        {sorted.map((topic) => {
+          const summary = extractSummary(topic.body);
+          return (
+            <a href={`/topics/${topic.id.replace(".md", "")}`}
+               class="block bg-bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-bg-hover hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline animate-fade-in">
+              <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent-light">{t("page.topics_badge")}</span>
+                <span class="text-text-muted text-xs sm:text-sm">{topic.data.date}</span>
+              </div>
+              <h2 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 line-clamp-2">{topic.data.title.replace(t("page.topics_label") + " | ", "")}</h2>
+              {summary && (
+                <p class="text-text-dim text-xs sm:text-sm line-clamp-2">{summary}</p>
+              )}
+              {topic.data.tags && topic.data.tags.length > 0 && (
+                <div class="flex gap-1.5 sm:gap-2 mt-2.5 sm:mt-3.5 flex-wrap">
+                  {topic.data.tags.map((tag) => (
+                    <span class="text-[11px] sm:text-xs text-text-muted bg-white/[0.04] px-2 sm:px-2.5 py-1 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          );
+        })}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

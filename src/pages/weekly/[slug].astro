@@ -1,0 +1,76 @@
+---
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/global.css";
+import { t } from "../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("weekly");
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatWeekDate(weekStr: string): string {
+  return weekStr.replace("-w", " 年第 ") + " 周";
+}
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{post.data.title} | AI Pulse</title>
+    <meta name="description" content={post.data.summary || post.data.title} />
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="zh" currentPath="/weekly" />
+
+    <main class="max-w-[780px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
+      <a href="/weekly" class="inline-flex items-center gap-1.5 text-text-dim text-xs sm:text-sm mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-lg border border-border bg-bg-card hover:text-text hover:bg-accent-glow hover:border-accent transition-all no-underline">
+        {t("article.back")}
+      </a>
+
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-orange/10 text-orange">{t("badge.weekly")}</span>
+        <span class="text-text-muted text-xs sm:text-sm">{formatWeekDate(post.data.date)}</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 leading-tight">{post.data.title}</h1>
+
+      <textarea id="md-source" style="display:none">{post.body}</textarea>
+
+      <button class="copy-btn fixed top-[68px] sm:top-[72px] right-4 sm:right-6 z-50 p-2 rounded-lg border border-border bg-bg-card hover:bg-accent-glow hover:border-accent transition-all text-text-dim hover:text-text" onclick="copyArticle()" title="复制文章">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C0 .784.784 0 1.75 0h7.5C10.216 0 11 .784 11 1.75v7.5A1.75 1.75 0 019.25 11h-7.5A1.75 1.75 0 010 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"></path></svg>
+      </button>
+
+      <article class="prose-custom">
+        <Content />
+      </article>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      window.copyArticle = function() {
+        var el = document.getElementById('md-source');
+        if (!el) return;
+        navigator.clipboard.writeText(el.value).then(function() {
+          var btn = document.querySelector('.copy-btn');
+          if (btn) {
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>';
+            setTimeout(function() {
+              btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C0 .784.784 0 1.75 0h7.5C10.216 0 11 .784 11 1.75v7.5A1.75 1.75 0 019.25 11h-7.5A1.75 1.75 0 010 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"></path></svg>';
+            }, 1500);
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

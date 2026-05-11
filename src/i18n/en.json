@@ -1,0 +1,112 @@
+{
+  "site": {
+    "name": "AI Pulse",
+    "tagline": "Extracting real signals from the AI noise",
+    "description": "AI Industry News Digest - Daily, Weekly & Rankings"
+  },
+  "nav": {
+    "home": "Home",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "industry": "Industry News",
+    "topics": "Discussions",
+    "rankings": "Rankings",
+    "search": "Search",
+    "lang_cn": "中文",
+    "lang_en": "EN",
+    "search_label": "Search"
+  },
+  "home": {
+    "title": "AI Pulse",
+    "tagline": "Extracting real signals from the AI noise",
+    "stats_daily": "Daily",
+    "stats_weekly": "Weekly",
+    "stats_total": "Total",
+    "filter_all": "All",
+    "filter_weekly": "Weekly",
+    "filter_daily": "Daily",
+    "section_industry": "Industry News",
+    "section_discussions": "Hot Discussions",
+    "section_rankings": "Trending Tools",
+    "section_rankings_desc": "Curated picks by category",
+    "browse_industry": "Browse News",
+    "browse_discussions": "Browse Discussions",
+    "browse_rankings": "Browse Rankings",
+    "section_latest": "Latest Updates",
+    "more": "More →"
+  },
+  "article": {
+    "back": "Back to list",
+    "back_rankings": "← Back to Rankings",
+    "back_topics": "← Back to Discussions",
+    "published": "Published",
+    "copy": "Copy",
+    "copied": "Copied",
+    "last_updated": "Updated"
+  },
+  "badge": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "discussion": "Discussion",
+    "tool": "AI Tool",
+    "model": "Model"
+  },
+  "page": {
+    "title_daily": "Daily",
+    "title_weekly": "Weekly",
+    "title_industry": "Industry News",
+    "title_topics": "Discussions",
+    "title_rankings": "AI Rankings",
+    "title_search": "Search",
+    "title_tools": "AI Tools",
+    "title_models": "Model Rankings",
+    "topics_count": "in-depth articles",
+    "topics_label": "Discussions",
+    "topics_badge": "Discussion"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search articles by title, summary, or content...",
+    "no_results": "No articles found",
+    "results_prefix": "Found",
+    "results_suffix": "results"
+  },
+  "rankings": {
+    "title": "AI Rankings",
+    "desc": "Tool recommendations + model benchmarks to help you choose wisely",
+    "tab_tools": "Tools",
+    "tab_models": "Models",
+    "last_updated": "Updated",
+    "data_source": "Source",
+    "benchmarks": "Benchmarks",
+    "tool_rank": "Rank",
+    "tool_name": "Tool",
+    "tool_price": "Price",
+    "tool_highlights": "Highlights",
+    "tool_oneliner": "Summary",
+    "model_rank": "Rank",
+    "model_name": "Model",
+    "model_vendor": "Vendor",
+    "model_type": "Type",
+    "model_score": "Score",
+    "view_detail": "View Details",
+    "categories": {
+      "coding": "Coding",
+      "writing": "Writing",
+      "design": "Design",
+      "video": "Video",
+      "audio": "Audio",
+      "data": "Data",
+      "agent": "Agent"
+    },
+    "model_categories": {
+      "arena": "Overall",
+      "coding": "Coding",
+      "reasoning": "Reasoning",
+      "multimodal": "Multimodal"
+    }
+  },
+  "footer": {
+    "text": "AI Pulse · Not just a news courier — real signal from the noise"
+  }
+}

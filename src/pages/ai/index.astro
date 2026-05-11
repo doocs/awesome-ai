@@ -1,0 +1,113 @@
+---
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/global.css";
+import { t } from "../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allTools = await getCollection("tools");
+const allModels = await getCollection("models");
+
+const toolCategories = [
+  { slug: "coding", name: t("rankings.categories.coding") },
+  { slug: "writing", name: t("rankings.categories.writing") },
+  { slug: "design", name: t("rankings.categories.design") },
+  { slug: "video", name: t("rankings.categories.video") },
+  { slug: "audio", name: t("rankings.categories.audio") },
+  { slug: "data", name: t("rankings.categories.data") },
+  { slug: "agent", name: t("rankings.categories.agent") },
+];
+
+const modelCategories = [
+  { slug: "model-arena", name: t("rankings.model_categories.arena") },
+  { slug: "model-coding", name: t("rankings.model_categories.coding") },
+  { slug: "model-reasoning", name: t("rankings.model_categories.reasoning") },
+  { slug: "model-multimodal", name: t("rankings.model_categories.multimodal") },
+];
+
+function getToolBySlug(slug: string) {
+  return allTools.find(t => t.id === `${slug}.md`);
+}
+function getModelBySlug(slug: string) {
+  return allModels.find(m => m.id === `${slug.replace("model-", "model-")}.md`);
+}
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{t("rankings.title")} | AI Pulse</title>
+    <meta name="description" content={t("rankings.desc")} />
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="zh" currentPath="/ai" />
+
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
+      <!-- Hero -->
+      <div class="text-center mb-8 sm:mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">{t("rankings.title")}</h1>
+        <p class="text-text-dim text-base sm:text-lg max-w-2xl mx-auto">{t("rankings.desc")}</p>
+      </div>
+      <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
+        <button id="tab-tools" class="tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all bg-accent-glow text-text border border-accent" onclick="switchTab('tools')">{t("rankings.tab_tools")}</button>
+        <button id="tab-models" class="tab-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all text-text-dim border border-border hover:text-text hover:bg-accent-glow" onclick="switchTab('models')">{t("rankings.tab_models")}</button>
+      </div>
+
+      <!-- Tools Section -->
+      <div id="section-tools" class="tab-section">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {toolCategories.map(cat => {
+            const tool = getToolBySlug(cat.slug);
+            return (
+              <a href={`/ai/tools/${cat.slug}`} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline">
+                <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+                <p class="text-text-dim text-xs line-clamp-2">{tool?.data.summary || ""}</p>
+                {tool?.data.last_updated && (
+                  <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{t("article.last_updated")}: {tool.data.last_updated}</div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Models Section -->
+      <div id="section-models" class="tab-section hidden">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          {modelCategories.map(cat => {
+            const model = getModelBySlug(cat.slug);
+            return (
+              <a href={`/ai/models/${cat.slug.replace("model-", "")}`} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline text-center">
+                <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+                <p class="text-text-dim text-xs line-clamp-2">{model?.data.summary || ""}</p>
+                {model?.data.last_updated && (
+                  <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{t("article.last_updated")}: {model.data.last_updated}</div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+          btn.classList.remove('active', 'bg-accent-glow', 'text-text', 'border-accent');
+          btn.classList.add('text-text-dim', 'border-border');
+        });
+        document.querySelectorAll('.tab-section').forEach(function(sec) {
+          sec.classList.add('hidden');
+        });
+        var activeBtn = document.getElementById('tab-' + tab);
+        activeBtn.classList.add('active', 'bg-accent-glow', 'text-text', 'border-accent');
+        activeBtn.classList.remove('text-text-dim', 'border-border');
+        document.getElementById('section-' + tab).classList.remove('hidden');
+      }
+    </script>
+  </body>
+</html>

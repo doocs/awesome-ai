@@ -1,0 +1,61 @@
+---
+import NavBar from "../../../components/NavBar.astro";
+import Footer from "../../../components/Footer.astro";
+import Card from "../../../components/Card.astro";
+import "../../../styles/global.css";
+import { t } from "../../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allEn = await getCollection("en");
+const allDaily = allEn.filter((item) => item.id.startsWith("daily/"));
+const sorted = allDaily.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+function extractSummary(content: string): string {
+  const lines = content.split("\n");
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && trimmed.length > 20) {
+      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
+    }
+  }
+  return "";
+}
+
+function extractTags(content: string): string[] {
+  const tags: string[] = [];
+  const lower = content.toLowerCase();
+  const tagMap: Record<string, string[]> = {
+    "OpenAI": ["openai", "gpt"], "Google": ["google", "deepmind", "gemini"],
+    "Anthropic": ["anthropic", "claude"], "Baidu": ["baidu", "ernie"],
+    "DeepSeek": ["deepseek"], "ByteDance": ["bytedance", "tiktok"],
+    "NVIDIA": ["nvidia"], "Robotics": ["robot"], "AI Video": ["video", "veo"],
+    "Funding": ["funding"], "Agent": ["agent"],
+  };
+  for (const [tag, keywords] of Object.entries(tagMap)) {
+    if (keywords.some((kw) => lower.includes(kw))) tags.push(tag);
+    if (tags.length >= 4) break;
+  }
+  if (tags.length === 0) tags.push("AI");
+  return tags;
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{t("page.title_daily", "en")} | AI Pulse</title>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="en" currentPath="/en/daily" />
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
+      <div class="grid gap-3 sm:gap-4">
+        {sorted.map((article) => (
+          <Card type="daily" title={article.data.title} date={article.data.date} summary={extractSummary(article.body)} tags={extractTags(article.body)} locale="en" href={`/en/daily/${article.id.replace("daily/", "").replace(".md", "")}`} />
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

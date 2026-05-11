@@ -1,189 +1,104 @@
-# 🤗 AI 工具集
+# AI Pulse
 
-## 国内 AI 工具汇总
+> 从海量 AI 资讯中提取真正有价值的信号
 
-### 聊天/内容生成
+**网站地址：** [https://ai-pulse.doocs.org/](https://ai-pulse.doocs.org/)
 
-- [DeepSeek](https://chat.deepseek.com/)：内容生成、文档分析、深度思考、联网搜索等
-- [文心一言](https://yiyan.baidu.com)：内容生成、文档分析、图像分析、图表制作、脑图等
-- [通义千问](https://tongyi.aliyun.com)：内容生成、文档分析、图像分析等
-- [Kimi(月之暗面)](https://kimi.moonshot.cn)：内容生成、文档分析、互联网搜索等
-- [腾讯元宝](https://yuanbao.tencent.com/chat)：内容生成、文档分析、灵感推荐等
-- [讯飞星火](https://xinghuo.xfyun.cn)：内容生成
-- [抖音豆包](https://www.doubao.com)：内容生成，偏互联网运营方向
-- [智谱 AI](https://open.bigmodel.cn)：内容生成、知识问答等
-- [百川智能](https://www.baichuan-ai.com/chat)：内容生成、文档分析、互联网搜索等
-- [360 智脑](https://ai.360.com)：360 智脑全家桶
-- [字节小悟空](https://wukong.com/tool)：字节跳动内容生成工具集
-- [达观数据曹植](http://www.datagrand.com/)：行业垂域大模型
+AI Pulse 是一个 AI 行业资讯聚合站点，提供双语（中文/英文）的日报、周报、专题讨论，以及 AI 工具推荐和全球模型排行榜。
 
-### AI 办公-综合
+## 内容类型
 
-- [360 数字员工](https://ai.360.com)：团队协作共享、企业知识库、AI 文档分析、AI 营销文案、AI 文书写作等智能工具
-- [有道 AI](https://ai.youdao.com)：文档、翻译、视觉、语音、教育等
+| 类型 | 说明 | 频率 |
+|------|------|------|
+| **日报** | 3-5 条精选 AI 新闻，简洁有观点 | 每天 2 次（08:00 / 22:00 北京时间） |
+| **周报** | 一周热点整合 + 深度分析 | 每周日 20:00 北京时间 |
+| **讨论** | AI 行业话题的专题文章 | 不定期 |
+| **排行榜** | AI 工具推荐 + 全球模型实力排行 | 每周自动更新 |
 
-### AI 办公-Office
+## AI 排行榜
 
-- [AiPPT](https://www.aippt.cn)：自动生成 PPT 大纲、模板、Word-PPT 等
-- [iSlide](https://www.islide.cc)：AI 一键设计 PPT
-- [WPS AI](https://ai.wps.cn)：WPS 的 AI 插件，智能 PPT、表格、文档整理等
-- [ChatPPT](http://www.chat-ppt.com)：支持 Office、WPS，自动文档生成
-- [360 苏打办公](https://bangong.360.cn)：文档、视频、设计、开发等
-- [酷表 ChatExcel](https://chatexcel.com)：智能 Excel 公式
-- [商汤办公小浣熊](https://raccoon.sensetime.com)：智能图表
+### 工具推荐
 
-### AI 办公-会议纪要
+7 大领域精选 AI 工具：
 
-- [讯飞听见](https://www.iflyrec.com)：音视频转文字、实时录音转文字、同传、翻译等
-- [阿里通义听悟](https://tingwu.aliyun.com)：实时转录、音视频转文字、互联网内容提炼等
-- [飞书妙记](https://www.feishu.cn/product/minutes?from=thosefree.com)：实时转录、音视频转文字
-- [腾讯会议 AI](https://meeting.tencent.com/ai/index.html)：腾讯会议录制后会议纪要整理
+| 领域 | 链接 |
+|------|------|
+| 编程开发 | [/ai/tools/coding](https://ai-pulse.doocs.org/ai/tools/coding) |
+| 内容写作 | [/ai/tools/writing](https://ai-pulse.doocs.org/ai/tools/writing) |
+| 设计视觉 | [/ai/tools/design](https://ai-pulse.doocs.org/ai/tools/design) |
+| 视频生成 | [/ai/tools/video](https://ai-pulse.doocs.org/ai/tools/video) |
+| 音频语音 | [/ai/tools/audio](https://ai-pulse.doocs.org/ai/tools/audio) |
+| 数据分析 | [/ai/tools/data](https://ai-pulse.doocs.org/ai/tools/data) |
+| Agent 平台 | [/ai/tools/agent](https://ai-pulse.doocs.org/ai/tools/agent) |
 
-### AI 办公-脑图
+### 模型排行
 
-- [ProcessOn](https://www.processon.com)：AI 思维导图
-- [亿图脑图](https://www.edrawsoft.cn/mindmaster)：AI 思维导图
-- [GitMind 思乎](https://gitmind.cn/)：AI 思维导图
-- [boardmix 博思白板](https://boardmix.cn/ai-whiteboard)：实时协作的智慧白板上、一键生成 PPT、用 AI 协助创作思维导图等
-- [妙办画板](https://imiaoban.com)：生成流程图、思维导图等
+全球主流模型 4 个维度 Top 20 排行：
 
-### AI 办公-文档
+| 排行榜 | 基准测试 | 链接 |
+|--------|----------|------|
+| 综合排行 | LMSYS Chatbot Arena, MMLU-Pro, IFEval | [/ai/models/arena](https://ai-pulse.doocs.org/ai/models/arena) |
+| 代码能力 | SWE-bench Verified, BigCodeBench, LiveCodeBench | [/ai/models/coding](https://ai-pulse.doocs.org/ai/models/coding) |
+| 推理能力 | AIME, GPQA Diamond, LiveBench | [/ai/models/reasoning](https://ai-pulse.doocs.org/ai/models/reasoning) |
+| 多模态 | MMMU, MathVista, MMBench | [/ai/models/multimodal](https://ai-pulse.doocs.org/ai/models/multimodal) |
 
-- [司马阅 AI 文档](https://smartread.cc/)：AI 文档阅读分析工具、通过聊天互动形式、提取并分析信息等
-- [360AI 浏览器](https://ai.360.com)：智能摘要、文章脉络、思维导图等
+## 多语言
 
-### AI 写作
+支持中文和英文双语：
 
-- [有道云笔记 AI](https://note.youdao.com)：有道云笔记写作插件、改写扩写润色等
-- [腾讯 Effidit](https://effidit.qq.com)：智能纠错、文本补全、文本改写、文本扩写、词语推荐、句子推荐与生成等功能
-- [讯飞写作](https://huixie.iflyrec.com)：AI 对话写作、模板写作、素材、润色等
-- [深言达意](https://www.shenyandayi.com)：根据模糊描述，找词找句的智能写作工具
-- [阿里悉语](https://login.taobao.com)：淘宝专用的商品文案生成，输入商品的淘宝链接即可获得文案
-- [字节火山写作](https://www.writingo.net)：全文润色的 AI 智能写作
-- [秘塔写作猫](https://xiezuocat.com)：AI 写作模板、AI 写作工具、指令扩写润色等
-- [光速写作](https://guangsuxie.com)：作业帮旗下：全文生成、PPT 生成、问答助手、写作助手
-- [WriteWise](https://www.ximalaya.com/gatekeeper/write-wise-web?ref=ai-bot.cn)：喜马拉雅小说创作工具
-- [笔灵 AI](https://ibiling.cn)：一键生成工作计划、文案方案等
-- [易撰](https://www.yizhuan5.com)：自媒体内容
-- [Giiso 写作机器人](https://www.giiso.com)：写作、文配图、风格转换、文生图等
-- [5118 SEO 优化精灵](https://www.5118.com/seometa)：快速生成高质量 SEO 标题、Meta 描述和关键字，提升网站搜索引擎排名
+| 语言 | README | 网站 |
+|------|--------|------|
+| 中文 | [README.md](./README.md) | [ai-pulse.doocs.org](https://ai-pulse.doocs.org/) |
+| English | [README_EN.md](./README_EN.md) | [ai-pulse.doocs.org/en/](https://ai-pulse.doocs.org/en/) |
 
-### AI 翻译
+## 项目结构
 
-- [沉浸式翻译](https://immersivetranslate.com)：翻译外语网页、PDF、EPUB 电子书、视频双语字幕等
-- [彩云小译](https://fanyi.caiyunapp.com)：多种格式文档的翻译、同声传译、文档翻译和网页翻译
-- [网易见外](https://sight.youdao.com)：字幕、音频转写、同传、文档翻译等
-- [STranslate](https://stranslate.zggsong.com)：一款即用即走的翻译、OCR 工具
+基于 Astro + Tailwind CSS 构建的静态站点，构建时生成所有页面，零运行时依赖。
 
-### AI 搜索引擎
+```
+src/
+├── content/                    # 中文版内容
+│   ├── daily/                  # 日报 (YYYY-MM-DD.md)
+│   ├── weekly/                 # 周报 (YYYY-wXX.md)
+│   ├── topics/                 # 专题讨论
+│   ├── tools/                  # AI 工具推荐（7 大领域）
+│   └── models/                 # AI 模型排行榜（4 个维度）
+├── content/en/                 # 英文版内容（同上结构）
+│   ├── daily/
+│   ├── weekly/
+│   ├── topics/
+│   ├── tools/
+│   └── models/
+├── components/                 # 可复用 Astro 组件
+│   ├── Card.astro
+│   ├── Footer.astro
+│   └── NavBar.astro
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/                      # 路由定义
+│   ├── index.astro             # 首页
+│   ├── search.astro            # 搜索页
+│   ├── ai/                     # 排行榜（工具 + 模型）
+│   ├── daily/                  # 日报列表
+│   ├── weekly/                 # 周报列表
+│   ├── industry/               # 行业动态
+│   ├── topics/                 # 专题讨论
+│   └── en/                     # 英文版镜像
+├── i18n/                       # 国际化配置（zh.json, en.json, utils.ts）
+└── styles/
+    └── global.css              # Tailwind + 自定义排版样式
+```
 
-- [天工 AI 搜索(昆仑万维)](https://search.tiangong.cn)：找资料、查信息、搜答案、搜文件等，对海量搜索结果进行 AI 智能聚合
-- [360AI 搜索](https://ai.360.com)：从海量的网站中主动寻找、提炼精准答案的 AI 搜索引擎
-- [秘塔 AI 搜索](https://metaso.cn)：无广告，直达结果的 AI 搜索引擎
-- [perplexity.ai](www.perplexity.ai)：黄仁勋带货的 AI 搜索引擎
-- [sciphi.ai](https://search.sciphi.ai)：AI 搜索引擎
-- [devv.ai](https://devv.ai)：为开发人员打造的人工智能驱动的搜索引擎
+## 最近更新
 
-### 图像生成/编辑
+| 类型 | 日期 | 链接 |
+|------|------|------|
+| 日报 | 2026-05-11 | [中文](https://ai-pulse.doocs.org/daily/2026-05-11) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-11) |
+| 日报 | 2026-05-10 | [中文](https://ai-pulse.doocs.org/daily/2026-05-10) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-10) |
+| 日报 | 2026-05-09 | [中文](https://ai-pulse.doocs.org/daily/2026-05-09) / [English](https://ai-pulse.doocs.org/en/daily/2026-05-09) |
+| 周报 | 2026-W19 | [中文](https://ai-pulse.doocs.org/weekly/2026-w19) / [English](https://ai-pulse.doocs.org/en/weekly/2026-w19) |
+| 专题 | AGI 品牌重塑 | [中文](https://ai-pulse.doocs.org/topics/agi-rebranding-exodus) / [English](https://ai-pulse.doocs.org/en/topics/agi-rebranding-exodus) |
+| 专题 | GitHub Agent 项目 | [中文](https://ai-pulse.doocs.org/topics/github-agent-projects) / [English](https://ai-pulse.doocs.org/en/topics/github-agent-projects) |
+| 专题 | Vibe Coding 争议 | [中文](https://ai-pulse.doocs.org/topics/vibe-coding-debate) / [English](https://ai-pulse.doocs.org/en/topics/vibe-coding-debate) |
 
-- [通义万相](https://tongyi.aliyun.com)：AI 生成图片，人工智能艺术创作大模型
-- [文心一格](https://yige.baidu.com)：文生图像
-- [剪映 AI](https://www.capcut.cn)：剪映一键生成 AI 绘画
-- [腾讯 ARC](https://arc.tencent.com)：人像修复、人像抠图、动漫增强等
-- [360 智绘](https://ai.360.com)：风格化 AI 绘画、Lora 训练等
-- [无限画](https://588ku.com/ai/wuxianhua/Home)：智能图像设计，整合千库网的设计行业知识经验、资源数据
-- [美图设计室](https://www.x-design.com)：图像智能处理、海报设计等
-- [liblib.ai](https://www.liblib.ai)：AI 模型分享平台，各种风格的图像微调模型
-- [Tusi.Art](https://tusiart.com)：AI 模型分享平台
-- [标小智 Logo 生成](https://www.logosc.cn)：在线 LOGO 设计，生成企业 VI
-- [佐糖](https://picwish.cn)：丰富的图像处理工具
-- [Vega AI](https://vegaai.net)：文生图、图生图、姿态生图、文生视频、图生视频等
-- [美图 WHEE](https://www.whee.com)：文生图、图生图、文生视频、扩图改图超清等
-- [无界 AI](https://www.wujieai.com)：文生图
-- [BgSub](https://bgsub.cn)：抠图
-- [阿里 PicCopilot](https://www.piccopilot.com)：阿里巴巴国际，AI 驱动图片优化工具，电商领域专属服务
-- [搜狐简单 AI](https://ai.sohu.com)：智能图片生成平台和社区
-- [6pen](https://6pen.art)：文本描述生成绘画艺术作品
 
-### AI 设计
-
-- [阿里堆友](https://d.design)：面向设计师群体的 AI 设计社区
-- [稿定 AI](https://www.gaoding.com)：图像设计
-- [墨刀 AI](https://modao.cc)：产品设计协作平台
-- [莫高设计 MasterGo AI](https://mastergo.com)：企业级产品设计平台，界面设计、交互设计等
-- [创客贴 AI](https://www.chuangkit.com)：图形图像设计
-- [即时 AI](https://js.design/ai)：文生 UI、文生图、图生 UI 等
-- [PixsO AI](https://pixso.cn)：新生代 UI 设计工具
-- [抖音即创](https://aic.oceanengine.com)：抖音电商智能创作平台，提供 AI 视频创作、图文创作和直播创作
-- [腾讯 AIDesign](https://ailogo.qq.com)：腾讯的 logo 设计
-- [美间](https://www.meijian.com)：AI 软装设计、海报和提案生成工具
-
-### AI 音频
-
-- [度加创作工具](https://aigc.baidu.com)：热搜一键成稿、文稿一键成片
-- [魔音工坊](https://www.moyin.com)：AI 配音工具
-- [网易天音](https://tianyin.music.163.com)：智能编曲，海量风格
-- [TME Studio](https://y.qq.com/tme_studio)：腾讯音乐智能音乐生成工具
-- [讯飞智作](https://www.xfzhizuo.cn)：配音、声音定制、虚拟主播、音视频处理等
-
-### AI 视频
-
-- [PixVerse](https://pixverse.ai)：文生视频
-- [绘影字幕](https://huiyingzimu.com)：AI 字幕、翻译、配音等
-- [万彩微影](https://www.animiz.cn/microvideo)：真人手绘视频、翻转文字视频、文章转视频等
-- [芦笋 AI 提词器](https://tcq.lusun.com)：AI 写稿、隐形提词效果、智能跟读等
-- [360 快剪辑](https://kuai.360.cn)：专业视频剪辑
-- [万彩 AI](https://ai.kezhan365.com)：高效、好用的 AI 写作和短视频创作平台
-
-### 数字人
-
-- [腾讯智影](https://zenvideo.qq.com)：数字人、文本配音、文章转视频等
-- [来画](https://www.laihua.com)：动画、数字人智能制作
-- [一帧秒创](https://aigc.yizhentv.com)：AI 视频、数字人、AI 作画等
-- [万兴播爆](https://virbo.wondershare.cn)：数字人、真人营销视频
-
-### AI 写代码
-
-- [昇思 MindSpore](https://www.mindspore.cn)：一站式 AI 开发平台，模型训练、推理、评测、精调等
-- [百度飞桨 PaddlePaddle AI Code assistant](https://www.paddlepaddle.org.cn)：在线编程、海量数据集等
-- [ZelinAI](https://www.zelinai.com)：零代码构建 AI 应用
-- [aiXcoder](https://www.aixcoder.com)：智能编程机器人，基于深度学习代码生成技术
-- [商汤代码小浣熊](https://raccoon.sensetime.com/code)：代码生成补全翻译重构……
-- [CodeArts Snap](https://www.huaweicloud.com/product/codeartside/snap.html)：覆盖代码生成、研发知识问答、单元测试用例生成、代码解释、代码注释、代码翻译、代码调试、代码检查等八大研发场景
-- [天工智码](https://sky-code.singularity-ai.com/index.html#/)：基于昆仑天工模型的 AI 代码工具
-- [MarsCode](https://www.marscode.com/dashboard)：字节跳动出品，基于豆包的 AI 代码工具，可以作为 IDE 的插件，支持主流语言
-
-### 模型训练/部署
-
-- [火山方舟](https://www.volcengine.com/product/ark)：模型训练、推理、评测、精调等全方位功能与服务
-- [魔搭社区](https://modelscope.cn)：提供模型探索体验、推理、训练、部署和应用的一站式服务
-- [文心大模型](https://wenxin.baidu.com)：产业级知识增强大模型
-
-### AI 提示词
-
-- [提示工程指南](www.promptingguide.ai)：如何使用提示词来完成不同的任务
-- [词魂](https://icihun.com/)：AIGC 精品提示词库
-
-### AI 工具合集
-
-- [AIbase](https://top.aibase.com/)：一个收集 AI 工具合集的网站
-- [AI Product Home](https://github.com/Eternaldeath/AIProductHome)：一个收集各种 AI 商业或开源产品的仓库
-
-## 国外 AI 工具汇总
-
-### 聊天/内容生成
-
-- [ChatGPT](https://chatgpt.com/)：内容生成、文档分析、图像分析、联网搜索等
-- [huggingChat](https://huggingface.co/chat/)：支持多种开源大模型
-- [LLAMA](https://www.meta.ai/)：Meta 出品的最强开源大模型
-- [Claude](https://claude.ai/)：媲美 GPT4
-
-### LLM 框架
-
-- [LangChain](https://www.langchain.com/)：一个用于构建和部署 AI 应用的框架
-- [Langfuse](https://www.langfuse.com/)：开源 LLM 工程平台，跟踪、评估、提示管理和指标，用于调试和改进 LLM 应用程序
-
-### AI 写代码
-
-- [GitHub Copilot](https://github.com/features/copilot)：GitHub 官方出品，世界上应用最广泛的人工智能开发者工具
-- [Cursor](https://www.cursor.com/)：一个深度集成了 AI 的代码编辑器，让你的编程效率高到起飞。

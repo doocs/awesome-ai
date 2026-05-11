@@ -1,0 +1,70 @@
+---
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import Card from "../../components/Card.astro";
+import "../../styles/global.css";
+import { t } from "../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allWeekly = await getCollection("weekly");
+const sorted = allWeekly.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+function formatWeekDate(weekStr: string): string {
+  return weekStr.replace("-w", " 年第 ") + " 周";
+}
+
+function extractSummary(content: string): string {
+  const lines = content.split("\n");
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && trimmed.length > 20) {
+      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
+    }
+  }
+  return "";
+}
+
+function extractTags(content: string): string[] {
+  const tags: string[] = [];
+  const lower = content.toLowerCase();
+  const tagMap: Record<string, string[]> = {
+    "openai": ["openai", "gpt"],
+    "Google": ["google", "deepmind", "gemini"],
+    "Anthropic": ["anthropic", "claude"],
+    "百度": ["百度", "文心"],
+    "DeepSeek": ["deepseek"],
+    "字节": ["字节", "tiktok"],
+    "NVIDIA": ["英伟达", "nvidia"],
+    "机器人": ["机器人", "robot"],
+    "AI 视频": ["视频", "veo"],
+    "融资": ["融资"],
+    "Agent": ["agent", "智能体"],
+  };
+  for (const [tag, keywords] of Object.entries(tagMap)) {
+    if (keywords.some((kw) => lower.includes(kw))) tags.push(tag);
+    if (tags.length >= 4) break;
+  }
+  if (tags.length === 0) tags.push("AI");
+  return tags;
+}
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{t("page.title_weekly")} | AI Pulse</title>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="zh" currentPath="/weekly" />
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
+      <div class="grid gap-3 sm:gap-4">
+        {sorted.map((article) => (
+          <Card type="weekly" title={article.data.title} date={formatWeekDate(article.data.date)} summary={extractSummary(article.body)} tags={extractTags(article.body)} href={`/weekly/${article.id.replace(".md", "")}`} />
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

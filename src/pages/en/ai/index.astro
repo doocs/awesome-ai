@@ -1,0 +1,112 @@
+---
+import NavBar from "../../../components/NavBar.astro";
+import Footer from "../../../components/Footer.astro";
+import "../../../styles/global.css";
+import { t } from "../../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allEntries = await getCollection("en");
+const allTools = allEntries.filter(e => e.id.startsWith("tools/"));
+const allModels = allEntries.filter(e => e.id.startsWith("models/"));
+
+const toolCategories = [
+  { slug: "coding", name: "Coding" },
+  { slug: "writing", name: "Writing" },
+  { slug: "design", name: "Design" },
+  { slug: "video", name: "Video" },
+  { slug: "audio", name: "Audio" },
+  { slug: "data", name: "Data" },
+  { slug: "agent", name: "Agent" },
+];
+
+const modelCategories = [
+  { slug: "model-arena", name: "Overall" },
+  { slug: "model-coding", name: "Coding" },
+  { slug: "model-reasoning", name: "Reasoning" },
+  { slug: "model-multimodal", name: "Multimodal" },
+];
+
+function getToolBySlug(slug) {
+  return allTools.find(t => t.id === `tools/${slug}.md`);
+}
+function getModelBySlug(slug) {
+  return allModels.find(m => m.id === `models/${slug}.md`);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>AI Rankings | AI Pulse</title>
+    <meta name="description" content="AI tool recommendations + model benchmarks" />
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale="en" currentPath="/en/ai" />
+
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
+      <div class="text-center mb-8 sm:mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">{t("rankings.title", "en")}</h1>
+        <p class="text-text-dim text-base sm:text-lg max-w-2xl mx-auto">{t("rankings.desc", "en")}</p>
+      </div>
+
+      <div class="flex justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
+        <button id="tab-tools" class="tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all bg-accent-glow text-text border border-accent" onclick="switchTab('tools')">{t("rankings.tab_tools", "en")}</button>
+        <button id="tab-models" class="tab-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all text-text-dim border border-border hover:text-text hover:bg-accent-glow" onclick="switchTab('models')">{t("rankings.tab_models", "en")}</button>
+      </div>
+
+      <div id="section-tools" class="tab-section">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {toolCategories.map(cat => {
+            const tool = getToolBySlug(cat.slug);
+            return (
+              <a href={`/en/ai/tools/${cat.slug}`} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline">
+                <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+                <p class="text-text-dim text-xs line-clamp-2">{tool?.data.summary || ""}</p>
+                {tool?.data.last_updated && (
+                  <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{t("article.last_updated", "en")}: {tool.data.last_updated}</div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <div id="section-models" class="tab-section hidden">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          {modelCategories.map(cat => {
+            const model = getModelBySlug(cat.slug);
+            return (
+              <a href={`/en/ai/models/${cat.slug.replace("model-", "")}`} class="group block bg-bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border hover:border-accent hover:-translate-y-0.5 transition-all duration-250 no-underline text-center">
+                <h3 class="font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">{cat.name}</h3>
+                <p class="text-text-dim text-xs line-clamp-2">{model?.data.summary || ""}</p>
+                {model?.data.last_updated && (
+                  <div class="mt-2 sm:mt-3 text-[10px] sm:text-xs text-text-muted">{t("article.last_updated", "en")}: {model.data.last_updated}</div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+          btn.classList.remove('active', 'bg-accent-glow', 'text-text', 'border-accent');
+          btn.classList.add('text-text-dim', 'border-border');
+        });
+        document.querySelectorAll('.tab-section').forEach(function(sec) {
+          sec.classList.add('hidden');
+        });
+        var activeBtn = document.getElementById('tab-' + tab);
+        activeBtn.classList.add('active', 'bg-accent-glow', 'text-text', 'border-accent');
+        activeBtn.classList.remove('text-text-dim', 'border-border');
+        document.getElementById('section-' + tab).classList.remove('hidden');
+      }
+    </script>
+  </body>
+</html>

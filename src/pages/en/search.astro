@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { t } from "../../i18n/utils.ts";
+
+// Build search index at build time
+const en = await getCollection("en");
+
+function extractText(body: string): string {
+  return body
+    .replace(/^---[\s\S]*?---/, "")
+    .replace(/#{1,6}\s/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_~`]/g, "")
+    .replace(/\n+/g, " ")
+    .trim();
+}
+
+interface SearchDoc {
+  id: string;
+  title: string;
+  summary: string;
+  body: string;
+  date: string;
+  tags: string[];
+  type: "daily" | "weekly" | "topic";
+  href: string;
+}
+
+const searchDocs: SearchDoc[] = en.map((e) => {
+  let type: "daily" | "weekly" | "topic" = "daily";
+  let href = "";
+  if (e.id.startsWith("daily/")) {
+    type = "daily";
+    href = `/en/daily/${e.id.replace("daily/", "").replace(".md", "")}`;
+  } else if (e.id.startsWith("weekly/")) {
+    type = "weekly";
+    href = `/en/weekly/${e.id.replace("weekly/", "").replace(".md", "")}`;
+  } else if (e.id.startsWith("topics/")) {
+    type = "topic";
+    href = `/en/topics/${e.id.replace("topics/", "").replace(".md", "")}`;
+  }
+  return {
+    id: e.id,
+    title: e.data.title,
+    summary: e.data.summary || "",
+    body: extractText(e.body),
+    date: e.data.date,
+    tags: e.data.tags || [],
+    type,
+    href,
+  };
+});
+
+const searchDocsJson = JSON.stringify(searchDocs);
+---
+
+<BaseLayout title={t("search.title", "en") + " | AI Pulse"} locale="en">
+  <div class="max-w-[780px] mx-auto w-full animate-fade-in">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 leading-tight">{t("search.title", "en")}</h1>
+
+    <div class="relative mb-2">
+      <input
+        id="search-input"
+        type="text"
+        placeholder={t("search.placeholder", "en")}
+        class="w-full px-4 py-3 rounded-xl border border-border bg-bg-card text-text text-sm sm:text-base placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+        autofocus
+      />
+      <kbd class="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-text-muted bg-white/5 border border-border rounded">Ctrl+K</kbd>
+    </div>
+    <div id="search-count" class="mb-4 text-xs text-text-muted"></div>
+
+    <div id="search-results" class="space-y-3 sm:space-y-4"></div>
+    <div id="search-empty" class="hidden text-center py-12 text-text-muted">
+      <svg class="mx-auto mb-3 text-text-muted/40" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <p class="text-sm">No matching articles found</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ docs: searchDocsJson }}>
+  var searchDocs = JSON.parse(docs);
+
+  var input = document.getElementById("search-input");
+  var resultsEl = document.getElementById("search-results");
+  var emptyEl = document.getElementById("search-empty");
+  var countEl = document.getElementById("search-count");
+
+  if (!input) return;
+
+  var typeLabels = { daily: "Daily", weekly: "Weekly", topic: "Topic" };
+  var typeColors = { daily: "bg-green/10 text-green", weekly: "bg-orange/10 text-orange", topic: "bg-accent/10 text-accent-light" };
+
+  function highlightText(text, query) {
+    if (!query || !text) return text;
+    var regex = new RegExp("(" + query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+    return text.replace(regex, '<mark class="bg-accent/30 text-text rounded px-0.5">$1</mark>');
+  }
+
+  function renderResults(docs, query) {
+    if (docs.length === 0) {
+      resultsEl.innerHTML = "";
+      emptyEl.classList.remove("hidden");
+      countEl.textContent = "";
+      return;
+    }
+
+    emptyEl.classList.add("hidden");
+    countEl.textContent = "Found " + docs.length + " result" + (docs.length > 1 ? "s" : "");
+
+    resultsEl.innerHTML = docs
+      .slice(0, 50)
+      .map(function(doc) {
+        var preview = doc.summary || doc.body.substring(0, 160);
+        var highlightedTitle = highlightText(doc.title, query);
+        var highlightedPreview = highlightText(preview, query);
+        return '<a href="' + doc.href + '" class="block p-4 rounded-xl border border-border bg-bg-card hover:border-accent hover:bg-accent-glow transition-all no-underline group">' +
+          '<div class="flex items-center gap-2 mb-1.5">' +
+          '<span class="text-xs font-semibold px-2 py-0.5 rounded-full ' + typeColors[doc.type] + '">' + typeLabels[doc.type] + '</span>' +
+          '<span class="text-xs text-text-muted">' + doc.date + '</span>' +
+          '</div>' +
+          '<h3 class="text-base font-semibold text-text group-hover:text-accent-light transition-colors mb-1">' + highlightedTitle + '</h3>' +
+          '<p class="text-sm text-text-dim leading-relaxed">' + highlightedPreview + (preview.length >= 160 ? "..." : "") + '</p>' +
+          '</a>';
+      })
+      .join("");
+  }
+
+  function doSearch(query) {
+    if (!query.trim()) {
+      renderResults([], "");
+      return;
+    }
+    var q = query.toLowerCase().trim();
+    var matched = searchDocs
+      .filter(function(doc) {
+        return doc.title.toLowerCase().includes(q) ||
+          doc.summary.toLowerCase().includes(q) ||
+          doc.body.toLowerCase().includes(q) ||
+          doc.tags.some(function(t) { return t.toLowerCase().includes(q); });
+      })
+      .sort(function(a, b) {
+        var aTitle = a.title.toLowerCase().includes(q) ? 3 : 0;
+        var bTitle = b.title.toLowerCase().includes(q) ? 3 : 0;
+        var aSummary = a.summary.toLowerCase().includes(q) ? 2 : 0;
+        var bSummary = b.summary.toLowerCase().includes(q) ? 2 : 0;
+        return (bTitle + bSummary) - (aTitle + aSummary) || b.date.localeCompare(a.date);
+      });
+    renderResults(matched, query);
+  }
+
+  var debounceTimer;
+  input.addEventListener("input", function(e) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() { doSearch(e.target.value); }, 200);
+  });
+
+  // Ctrl+K or Cmd+K to focus search input
+  document.addEventListener("keydown", function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+</script>

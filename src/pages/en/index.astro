@@ -1,0 +1,192 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import { t } from "../../i18n/utils.ts";
+import { getCollection } from "astro:content";
+
+const allEn = await getCollection("en");
+const allDaily = allEn.filter((e) => e.id.startsWith("daily/"));
+const allWeekly = allEn.filter((e) => e.id.startsWith("weekly/"));
+const allTopics = allEn.filter((e) => e.id.startsWith("topics/"));
+
+const dailyList = [...allDaily].sort((a, b) => b.data.date.localeCompare(a.data.date));
+const weeklyList = [...allWeekly].sort((a, b) => b.data.date.localeCompare(a.data.date));
+const topicsList = [...allTopics].sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+function formatDate(dateStr: string, type: "daily" | "weekly"): string {
+  if (type === "weekly") return dateStr.replace("-w", " Week ");
+  return dateStr;
+}
+
+function extractSummary(content: string): string {
+  const lines = content.split("\n");
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("-") && !trimmed.startsWith(">") && !trimmed.startsWith("---") && !trimmed.startsWith("*") && trimmed.length > 20) {
+      return trimmed.length > 140 ? trimmed.substring(0, 140) + "..." : trimmed;
+    }
+  }
+  return "";
+}
+
+function extractTags(content: string): string[] {
+  const tags: string[] = [];
+  const lower = content.toLowerCase();
+  const tagMap: Record<string, string[]> = {
+    "OpenAI": ["openai", "gpt"],
+    "Google": ["google", "deepmind", "gemini"],
+    "Anthropic": ["anthropic", "claude"],
+    "Baidu": ["baidu", "ernie", "文心"],
+    "DeepSeek": ["deepseek"],
+    "ByteDance": ["bytedance", "tiktok", "字节"],
+    "NVIDIA": ["nvidia", "英伟达"],
+    "Robotics": ["robot", "机器人"],
+    "AI Video": ["video", "veo", "视频"],
+    "Funding": ["funding", "融资"],
+    "Agent": ["agent", "智能体"],
+  };
+  for (const [tag, keywords] of Object.entries(tagMap)) {
+    if (keywords.some((kw) => lower.includes(kw))) tags.push(tag);
+    if (tags.length >= 4) break;
+  }
+  if (tags.length === 0) tags.push("AI");
+  return tags;
+}
+
+function buildCard(article: any, type: "daily" | "weekly") {
+  return {
+    type,
+    title: article.data.title,
+    date: formatDate(article.data.date, type),
+    summary: extractSummary(article.body),
+    tags: extractTags(article.body),
+    href: `/en/${article.id.replace(".md", "")}`,
+  };
+}
+
+const latestDaily = dailyList.length > 0 ? buildCard(dailyList[0], "daily") : null;
+const latestWeekly = weeklyList.length > 0 ? buildCard(weeklyList[0], "weekly") : null;
+const latestTopic = topicsList.length > 0 ? {
+  type: "topic" as const,
+  title: topicsList[0].data.title,
+  date: topicsList[0].data.date,
+  summary: topicsList[0].data.summary || extractSummary(topicsList[0].body),
+  tags: topicsList[0].data.tags || [],
+  href: `/en/${topicsList[0].id.replace(".md", "")}`,
+} : null;
+
+const recentDaily = dailyList.slice(1, 6).map((a) => buildCard(a, "daily"));
+const recentWeekly = weeklyList.slice(1, 4).map((a) => buildCard(a, "weekly"));
+const recentTopics = topicsList.slice(1, 4).map((a) => ({
+  type: "topic" as const,
+  title: a.data.title,
+  date: a.data.date,
+  summary: a.data.summary || extractSummary(a.body),
+  tags: a.data.tags || [],
+  href: `/en/${a.id.replace(".md", "")}`,
+}));
+---
+
+<BaseLayout title={t("site.name", "en")} locale="en">
+  <!-- Hero -->
+  <section class="relative text-center py-12 sm:py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-glow via-transparent to-transparent opacity-60"></div>
+    <div class="mb-3 sm:mb-4">
+      <span class="text-4xl sm:text-6xl">⚡</span>
+    </div>
+    <h1 class="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4 tracking-tight">AI Pulse</h1>
+    <p class="text-text-dim text-sm sm:text-base max-w-md mx-auto mb-6 sm:mb-8">
+      {t("site.tagline", "en")}<br class="sm:hidden" />
+    </p>
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+      <a href="/en/industry" class="px-5 py-2.5 bg-accent text-white text-sm font-medium rounded-xl hover:bg-accent-light transition-colors no-underline">{t("home.browse_industry", "en")}</a>
+      <a href="/en/topics" class="px-5 py-2.5 border border-border text-text text-sm font-medium rounded-xl hover:bg-accent-glow hover:border-accent transition-all no-underline">{t("home.browse_discussions", "en")}</a>
+    </div>
+  </section>
+
+  <!-- AI Rankings Section -->
+  <section class="mt-8 sm:mt-12">
+    <div class="flex items-center justify-between mb-4 sm:mb-5">
+      <h2 class="text-lg sm:text-xl font-semibold flex items-center gap-2">
+        <span class="w-1 h-5 bg-accent rounded-full"></span>
+        {t("home.section_rankings", "en")}
+      </h2>
+      <a href="/en/ai" class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">{t("home.more", "en")}</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-3">
+      {[
+        { name: t("rankings.categories.coding", "en"), href: "/en/ai/tools/coding" },
+        { name: t("rankings.categories.writing", "en"), href: "/en/ai/tools/writing" },
+        { name: t("rankings.categories.design", "en"), href: "/en/ai/tools/design" },
+        { name: t("rankings.categories.video", "en"), href: "/en/ai/tools/video" },
+        { name: t("rankings.categories.audio", "en"), href: "/en/ai/tools/audio" },
+        { name: t("rankings.categories.data", "en"), href: "/en/ai/tools/data" },
+        { name: t("rankings.categories.agent", "en"), href: "/en/ai/tools/agent" },
+      ].map(item => (
+        <a href={item.href} class="group block bg-bg-card rounded-xl p-3 sm:p-4 border border-border hover:border-accent hover:-translate-y-0.5 transition-all no-underline text-center">
+          <h3 class="font-medium text-xs sm:text-sm group-hover:text-accent transition-colors">{item.name}</h3>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Latest Three -->
+  {(latestDaily || latestWeekly || latestTopic) && (
+    <section class="mt-8 sm:mt-12">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-5 flex items-center gap-2">
+        <span class="w-1 h-5 bg-accent rounded-full"></span>
+        {t("home.section_latest", "en")}
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        {latestDaily && (
+          <Card type={latestDaily.type} title={latestDaily.title} date={latestDaily.date} summary={latestDaily.summary} tags={latestDaily.tags} href={latestDaily.href} featured locale="en" />
+        )}
+        {latestWeekly && (
+          <Card type={latestWeekly.type} title={latestWeekly.title} date={latestWeekly.date} summary={latestWeekly.summary} tags={latestWeekly.tags} href={latestWeekly.href} featured locale="en" />
+        )}
+        {latestTopic && (
+          <Card type={latestTopic.type} title={latestTopic.title} date={latestTopic.date} summary={latestTopic.summary} tags={latestTopic.tags} href={latestTopic.href} featured locale="en" />
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Industry News (Daily + Weekly combined) -->
+  {(recentDaily.length > 0 || recentWeekly.length > 0) && (
+    <section class="mt-10 sm:mt-14">
+      <div class="flex items-center justify-between mb-4 sm:mb-5">
+        <h2 class="text-lg sm:text-xl font-semibold flex items-center gap-2">
+          <span class="w-1 h-5 bg-accent rounded-full"></span>
+          {t("home.section_industry", "en")}
+        </h2>
+        <a href="/en/industry" class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">{t("home.more", "en")}</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        {[...recentDaily.map((item) => ({ ...item, type: "daily" as const })), ...recentWeekly.map((item) => ({ ...item, type: "weekly" as const }))]
+          .sort((a, b) => b.date.localeCompare(a.date))
+          .slice(0, 6)
+          .map((item) => (
+            <Card type={item.type} title={item.title} date={item.date} summary={item.summary} tags={item.tags} href={item.href} locale="en" />
+          ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Discussions -->
+  {recentTopics.length > 0 && (
+    <section class="mt-10 sm:mt-14">
+      <div class="flex items-center justify-between mb-4 sm:mb-5">
+        <h2 class="text-lg sm:text-xl font-semibold flex items-center gap-2">
+          <span class="w-1 h-5 bg-pink rounded-full"></span>
+          {t("home.section_discussions", "en")}
+        </h2>
+        <a href="/en/topics" class="text-sm text-text-muted hover:text-accent-light transition-colors no-underline">{t("home.more", "en")}</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        {recentTopics.map((item) => (
+          <Card type={item.type} title={item.title} date={item.date} summary={item.summary} tags={item.tags} href={item.href} locale="en" />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
