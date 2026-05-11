@@ -1,0 +1,32 @@
+---
+/**
+ * WeChat subscribe QR code section — shown at the bottom of every content article.
+ */
+interface Props {
+  locale?: "zh" | "en";
+}
+
+const { locale = "zh" } = Astro.props;
+import wechatQr from "../assets/wechat-qrcode.jpg";
+---
+
+<div class="wechat-subscribe mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-border">
+  <div class="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
+    <img
+      src={wechatQr.src}
+      alt="微信公众号二维码"
+      class="w-36 h-36 sm:w-40 sm:h-40 rounded-xl object-cover shadow-[0_8px_30px_rgba(99,102,241,0.12)] border border-border flex-shrink-0"
+      loading="lazy"
+    />
+    <div class="text-center sm:text-left">
+      <h3 class="text-lg sm:text-xl font-semibold mb-2">
+        {locale === "en" ? "Follow Us on WeChat" : "微信扫码关注"}
+      </h3>
+      <p class="text-text-dim text-sm sm:text-base leading-relaxed">
+        {locale === "en"
+          ? "Get daily AI news delivered to your feed"
+          : "每日推送直达，不错过任何重要资讯"}
+      </p>
+    </div>
+  </div>
+</div>
