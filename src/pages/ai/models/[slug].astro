@@ -29,15 +29,13 @@ const { Content } = await post.render();
   mermaid.initialize({ theme: 'dark', securityLevel: 'loose' });
   
   document.addEventListener('DOMContentLoaded', async () => {
-    const codeBlocks = document.querySelectorAll('code.language-mermaid');
-    for (const code of codeBlocks) {
-      const pre = code.parentElement;
-      if (pre && pre.tagName === 'PRE') {
-        const diagram = document.createElement('div');
-        diagram.className = 'mermaid';
-        diagram.textContent = code.textContent;
-        pre.replaceWith(diagram);
-      }
+    const pres = document.querySelectorAll('pre[data-language="mermaid"]');
+    for (const pre of pres) {
+      const rawText = pre.textContent;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = rawText;
+      pre.replaceWith(div);
     }
     await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
   });
