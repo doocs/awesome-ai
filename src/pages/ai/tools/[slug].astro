@@ -24,9 +24,13 @@ const { Content } = await post.render();
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <title>{post.data.title} | Awesome AI</title>
     <meta name="description" content={post.data.summary || post.data.title} />
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
   </head>
   <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
-    <NavBar locale="zh" currentPath="/ai" />
+    <NavBar locale="zh" currentPath="/ai/tools" />
 
     <main class="max-w-[780px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
       <a href="/ai" class="inline-flex items-center gap-1.5 text-text-dim text-xs sm:text-sm mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-lg border border-border bg-bg-card hover:text-text hover:bg-accent-glow hover:border-accent transition-all no-underline">
