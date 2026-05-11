@@ -13,7 +13,7 @@ const prefix = locale === "en" ? "/en" : "";
 <footer class="border-t border-border mt-auto">
   <div class="max-w-[1100px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
     <!-- Top: Quick Links + WeChat -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-border">
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-border">
       <!-- Content -->
       <div>
         <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{t("nav.industry", locale)}</h4>
@@ -32,8 +32,17 @@ const prefix = locale === "en" ? "/en" : "";
           <li><a href={`${prefix}/ai/tools/agent`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("rankings.categories.agent", locale)}</a></li>
         </ul>
       </div>
+      <!-- Open Source -->
+      <div>
+        <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{locale === "en" ? "Open Source" : "开源社区"}</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="https://github.com/doocs/leetcode" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">LeetCode</a></li>
+          <li><a href="https://github.com/doocs/md" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">{locale === "en" ? "Markdown Guide" : "Markdown 语法"}</a></li>
+          <li><a href="https://github.com/yanglbme" target="_blank" rel="noopener" class="text-text-dim hover:text-accent-light transition-colors no-underline">@yanglbme</a></li>
+        </ul>
+      </div>
       <!-- More -->
-      <div class="hidden sm:block">
+      <div>
         <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5 sm:mb-3">{locale === "en" ? "More" : "更多"}</h4>
         <ul class="space-y-2 text-sm">
           <li><a href={`${prefix}/search`} class="text-text-dim hover:text-accent-light transition-colors no-underline">{t("nav.search", locale)}</a></li>
@@ -58,7 +67,7 @@ const prefix = locale === "en" ? "/en" : "";
     <!-- Bottom -->
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted">
       <p class="text-center sm:text-left">
-        {locale === "en" ? "Extracting real signals from the AI noise" : "不做信息搬运工，只做有价值的筛选和分析"}
+        Doocs 开源社区 · {locale === "en" ? "Extracting real signals from the AI noise" : "不做信息搬运工，只做有价值的筛选和分析"}
       </p>
       <p>
         Copyright &copy; <span id="footer-year"></span> <a href="https://github.com/doocs" class="text-accent-light no-underline hover:underline" target="_blank" rel="noopener">Doocs</a>
