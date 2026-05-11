@@ -1,71 +1,184 @@
 ---
-title: "Topic | Hermes Agent: Turning LLMs into Actionable Execution Engines"
+title: "Topic | Why Hermes Agent Went Viral — A Comparison with OpenClaw"
 date: "2026-05-11"
 type: "topic"
-tags: ["Agent", "Automation", "LLM Tools", "DevOps"]
-summary: "Hermes Agent extends LLMs from pure text interaction into an automated execution framework with system-level capabilities. This article breaks down its architecture, runtime logic, and engineering practices."
+tags: ["Hermes Agent", "OpenClaw", "AI Agent", "Open Source"]
+summary: "OpenClaw holds the throne, but Hermes Agent is catching up fast. From naming to architecture, here's why it went viral"
 ---
 
-## Introduction
+> Lobster conquers, Hermès refines
 
-Modern LLM chatboxes can answer plenty of questions, but when it comes to real work—running scripts, tweaking configs, navigating web pages, scraping data on a schedule, or routing notifications across platforms—text alone isn't enough. Hermes Agent bridges this gap. It's not just a chatbot; it's an automated execution framework that turns model reasoning into tangible actions. The model handles judgment and planning, while the framework gets the job done.
+---
 
-## Core Runtime Logic
+The current AI Agent landscape can be summed up in one sentence: **OpenClaw opens new territory, Hermes does the precision farming.**
 
-Hermes operates on a straightforward loop: upon receiving a task, the model inspects the environment, checks historical context, maps out steps, and then invokes tools to execute them. Whether it's terminal commands, browser interactions, or file I/O, every step returns real system feedback. If execution succeeds, it moves forward. If it fails or hits a high-risk operation requiring human approval, it pauses and waits.
+OpenClaw (the open-source lobster) sits at #1 with 370K+ GitHub stars. Hermes Agent trails at #2 with 141K+.
 
-The execution flow can be summarized as follows:
+But here's the interesting part: Hermes's discussion heat in the community, secondary development activity, and especially its spread in the Chinese tech circle is on par with — and in some cases exceeds — OpenClaw.
 
-```mermaid
-graph TD
-  A[Receive User Instruction] --> B[Analyze Context & History]
-  B --> C[Plan Execution Steps]
-  C --> D{Select & Invoke Tool}
-  D -->|Success| E[Get System Feedback]
-  D -->|Failure/High-Risk| F[Pause & Request Approval]
-  E --> G{Task Complete?}
-  G -->|No| C
-  G -->|Yes| H[Return Final Result]
-  F -->|Approved| C
-  F -->|Denied| I[Terminate & Cleanup]
-```
+Why?
 
-This loop runs inside a controlled sandbox, preserving the model's flexibility while preventing system-level damage from hallucinations or unintended side effects.
+---
 
-## Core Capabilities Breakdown
+## The Name Won Half the Battle — Hermès vs Lobster
 
-### 1. System Interaction & Sandboxed Execution
-Terminal and code execution are foundational. `terminal` supports foreground blocking calls and background persistent processes, capturing stdout, monitoring exit codes, and triggering callbacks on specific log patterns. `execute_code` provides an isolated Python environment with built-in file I/O, regex search, and code patching utilities. Batch replacements, build pipelines, and data cleaning are routine operations.
+Let's start with the name.
 
-### 2. Browser Automation
-Many ops and data tasks depend on the web. The built-in browser control chain supports everything from page navigation and form filling to structured data extraction and screenshot analysis, including console error monitoring. It doesn't just "read" the DOM; it interacts with it like a human. Paired with vision APIs, it handles complex dynamic layouts or CAPTCHAs effortlessly.
+OpenClaw, literally "open source claw," got the nickname "lobster" from the community. Cute, memorable, but ultimately just an open-source tool name.
 
-### 3. Persistent Memory & Context Retrieval
-Traditional AI forgets everything after a session. Hermes uses local key-value storage for cross-session state persistence. The `memory` tool logs environment configs, user preferences, and historical troubleshooting notes, injecting them into future contexts. Combined with `session_search` (full-text session retrieval), the model can proactively look up past records when asked "how did we fix that last time?", eliminating repetitive debugging.
+Hermes? The messenger god in Greek mythology, and also the namesake of the luxury brand Hermès. The Chinese community directly calls it "爱马仕" (Hermès).
 
-### 4. Task Decomposition & Parallel Execution
-For complex workloads, the main agent automatically splits tasks and delegates them to multiple sub-agents. Each sub-agent runs in an isolated terminal session, toolset, and working directory. Results are aggregated upon completion. The framework controls concurrency depth, boosting throughput without blowing up context windows.
+The psychological anchoring from the name is real:
 
-### 5. Scheduled Jobs & Multi-Channel Delivery
-Using the built-in `cronjob` module, tasks can be scheduled via standard cron expressions. Data collection, report generation, and status sync run on autopilot. Upon completion, results are automatically routed to WeChat, Telegram, Discord, or local storage. Jobs are stateless; prompts just need to be self-contained, requiring zero human supervision.
+- **Lobster** sounds like an open-source geek project — practical, down-to-earth, but lacking "premium feel"
+- **Hermès** naturally carries associations of "refined, premium, quality"
 
-## The Skills System
+In the Chinese tech community, "I use Hermès" vs "I use Lobster" have completely different viral spread effects. This isn't about the Hermes team deliberately riding the luxury brand's coattails — it's that the name happened to hit the psychological expectation people have for a "high-quality tool."
 
-To make automation robust, Hermes introduces a "Skills" mechanism. Developers can codify common workflows—like GitHub releases, data pipelines, or deployment steps—into structured Markdown guides. When a task arrives, the model automatically matches and loads the relevant skill, following the prescribed steps and drastically reducing context-heavy reasoning.
+---
 
-Crucially, skill files are "alive." If execution reveals an outdated step or uncovers a pitfall not documented in the guide, the model directly calls the management tool to patch the skill file. Documentation and actual practice stay in sync, eliminating manual maintenance overhead.
+## Positioning: Universal Assistant vs Self-Growing Framework
 
-## Security & Boundaries
+This is the fundamental difference between the two.
 
-Uncontrolled automation is dangerous. Hermes enforces hard engineering constraints:
-- **Credential Isolation**: Tokens and environment variables are injected via local files and strictly masked during execution. Logs never expose sensitive fields.
-- **Operation Approval**: High-risk commands (e.g., force pushes, resource deletion, system overwrites) trigger mandatory interception. The model cannot bypass this.
-- **Resource Limits**: All commands and scripts have timeout and memory caps. Background processes support lifecycle tracking. If a job hangs or spirals, it's terminated automatically, leaving no zombie processes.
+### OpenClaw: The Do-It-All Universal Assistant
 
-The design principle is clear: it doesn't take risks on your behalf. It only handles the repetitive, tedious, cross-system coordination work that drains engineering time.
+OpenClaw's motto is "Any OS, Any Platform" — a cross-platform, general-purpose personal AI assistant.
 
-## Conclusion
+Its design goal: **one Agent to replace all the tools on your computer**. Code, research, email, file management — one entry point for everything.
 
-Hermes Agent's positioning is unambiguous. It doesn't try to replace human judgment; it offloads standardized workflows to machines. Paired with clear instructions, a reliable skill library, and reasonable permission boundaries, it delivers stable automation across daily development, ops monitoring, and content aggregation. You collect the results. It handles the rest.
+The advantage is broad coverage and low entry barrier. Install and go, no configuration needed.
 
-> **Awesome AI View:** The next phase for LLMs isn't "better conversation," it's "better execution." Hermes packages tool invocation, state management, and sandbox isolation into out-of-the-box infrastructure, bridging the last mile from "chat" to "deployment." For developers and ops teams, this means freeing up bandwidth from repetitive cross-system operations to focus on architecture and core business logic. The engineering maturity of Agent frameworks will directly dictate AI's penetration rate in production environments.
+But the problem is clear: being a jack-of-all-trades means it's hard to be best-in-class in any vertical scenario.
+
+### Hermes: The Self-Growing Framework
+
+Hermes Agent has a completely different positioning. Its core selling point is **self-growing**.
+
+Not just "ask and answer," but:
+
+- **Has memory**: Remembers your preferences, habits, decision patterns
+- **Can learn**: Extracts patterns from every interaction, optimizes its behavior strategies
+- **Evolves**: The more you use it, the more it understands you
+
+Think of it this way:
+
+- OpenClaw is a Swiss Army knife — every tool is there, but all standardized
+- Hermes is a knife that sharpens itself — the more you use it, the better it fits your hand
+
+---
+
+## Why Hermes Went Viral in the Chinese Community
+
+### 1. More Transparent Technical Architecture
+
+OpenClaw is open-source, but its core logic is deeply encapsulated, making secondary development not trivial. Many developers want to add a custom feature but end up spending hours reading source code.
+
+Hermes's architecture is more modular — the plugin system, memory module, and tool invocation layer are all independent. Developers can quickly plug in and combine things according to their needs.
+
+For Chinese developers who love to tinker, Hermes's architecture is more friendly.
+
+### 2. The "Self-Growing" Concept Hits a Pain Point
+
+What's the biggest complaint from domestic users about AI assistants? **"After using it for a month, it's just as dumb as day one."**
+
+OpenClaw doesn't get smarter. Day 1 and day 100, its performance is about the same — because it's a general-purpose design with no continuous learning mechanism.
+
+Hermes promises: the more you use it, the more it understands you. That's a huge experiential difference.
+
+### 3. Vibrant Secondary Creation Ecosystem
+
+Hermes's plugin ecosystem is growing fast. The Chinese community has already built:
+
+- WeChat integration plugins
+- Notion knowledge management plugins
+- Stock monitoring plugins
+- Even smart home integrations
+
+OpenClaw has plugins too, but most are official releases, with relatively fewer community contributions.
+
+This comes back to architecture — Hermes's modular design makes "writing a plugin" straightforward, while OpenClaw's plugin development requires deeper understanding of its core architecture.
+
+---
+
+## Brief Technical Breakdown
+
+Beyond the "why it went viral," let's look at what it actually does. Hermes's core capabilities break down into five layers:
+
+### System Interaction & Sandbox Execution
+
+Terminal and code execution are its fundamentals. It supports foreground blocking calls and background persistent processes, can capture stdout, monitor exit codes, and trigger callbacks on specific log patterns. The built-in Python runtime provides an isolated code execution space — batch replacements, build pipelines, and data cleaning are all routine operations.
+
+### Browser Automation
+
+A lot of work离不开 web pages. The built-in browser control chain supports everything from opening pages, filling forms and clicking, to extracting structured data, screenshot analysis, and even monitoring console errors. Paired with a vision interface, handling complex dynamic layouts is smooth.
+
+### Persistent Memory & Context Retrieval
+
+Traditional AI forgets after the chat ends. Hermes achieves cross-session state persistence through local key-value storage. Environment configs, user preferences, and historical pitfall records are all saved and injected into context on the next session. Combined with full-text search, the model can proactively look up past records and avoid debugging the same issue twice.
+
+### Task Decomposition & Parallelism
+
+For complex tasks, the main agent automatically decomposes and distributes work to multiple sub-agents. Each runs in an isolated terminal session, toolset, and working directory, without interfering with each other. Results are aggregated automatically upon completion.
+
+### Scheduled Jobs & Multi-Platform Delivery
+
+Through the built-in cronjob module, you can schedule tasks with standard cron expressions. Data collection, report generation, status sync — when done, results are automatically pushed to WeChat, Telegram, Discord, or local files.
+
+---
+
+## Skills System: Making Agents More Reliable
+
+To make automation more dependable, Hermes introduces a "skills" mechanism. Developers can write commonly used workflows — like GitHub releases, data cleaning, deployment pipelines — as structured Markdown guides. When the model receives a task, it automatically matches and loads the corresponding skill, following the steps and reducing context inference overhead.
+
+More practically, skill files are "living." If the model finds a step outdated during execution, or hits a pitfall the guide didn't cover, it will directly update the skill file. Documentation and actual operation always stay in sync.
+
+---
+
+## Safety & Boundaries
+
+The biggest fear with automation is losing control. Hermes enforces hard constraints at the engineering level:
+
+- **Credential Isolation**: Tokens and environment variables are injected via local files, strictly masked during execution, and never printed in logs.
+- **Operation Approval**: Dangerous commands (like force push, resource deletion) trigger mandatory interception — the model cannot bypass them on its own.
+- **Resource Limits**: All commands and scripts have timeout and memory caps. Background processes support lifecycle tracking and are auto-killed if they run wild, leaving no zombie processes.
+
+Its design principle is clear: it won't take risks for you, it only does the repetitive, tedious, cross-system grunt work so you don't have to.
+
+---
+
+## Objective Comparison
+
+| Dimension | OpenClaw (Lobster) | Hermes Agent (Hermès) |
+|---|---|---|
+| Stars | 370K+ | 141K+ |
+| Positioning | Universal AI assistant | Self-growing Agent framework |
+| Onboarding | Low, out of the box | Medium, simple config needed |
+| Customizability | Medium, core logic is deep | High, modular plugin architecture |
+| Memory | Basic session memory | Long-term memory + pattern learning |
+| Community Ecosystem | Official-led | Active community contributions |
+| Best For | Users wanting an all-in-one assistant | Developers wanting an evolving Agent |
+
+---
+
+## My Take
+
+**OpenClaw and Hermes are not competitors — they're complementary.**
+
+- If you just want an "AI assistant that gets things done," OpenClaw is the better choice — install and use, no tinkering needed.
+- If you're a developer, or want an "Agent that gets smarter the more I use it," Hermes is worth the setup time.
+
+An analogy:
+
+- OpenClaw is like an iPhone — easy to use, worry-free, does everything
+- Hermes is like Android — requires tinkering, but after tinkering it's your custom machine
+
+In the AI Agent space, **"universal" and "personalized" will coexist long-term**. OpenClaw represents the former at its extreme, Hermes represents the direction of the latter.
+
+And Hermes went viral because it tapped into a trend: **people are no longer satisfied with a "does everything but nothing well" universal assistant — they want a "serves me specifically and understands me better over time" personalized Agent.**
+
+This trend has only just begun.
+
+---
+
+*Awesome AI - Not just moving information, doing valuable filtering and analysis*
