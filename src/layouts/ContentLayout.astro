@@ -1,0 +1,48 @@
+---
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  locale: 'zh' | 'en';
+  currentPath: string;
+}
+
+const { title, description, locale, currentPath } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{title} | Awesome AI</title>
+    <meta name="description" content={description || title} />
+    
+    <!-- Mermaid Diagram Support -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ theme: 'dark', securityLevel: 'loose' });
+      
+      document.addEventListener('DOMContentLoaded', async () => {
+        const pres = document.querySelectorAll('pre[data-language="mermaid"]');
+        for (const pre of pres) {
+          const rawText = pre.textContent;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = rawText;
+          pre.replaceWith(div);
+        }
+        await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+      });
+    </script>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <NavBar locale={locale} currentPath={currentPath} />
+    <slot />
+    <Footer />
+  </body>
+</html>

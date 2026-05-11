@@ -1,6 +1,5 @@
 ---
-import NavBar from "../../../../components/NavBar.astro";
-import Footer from "../../../../components/Footer.astro";
+import ContentLayout from "../../../../layouts/ContentLayout.astro";
 import "../../../../styles/global.css";
 import { t } from "../../../../i18n/utils.ts";
 import { getCollection } from "astro:content";
@@ -18,34 +17,9 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-    <title>{post.data.title} | Awesome AI</title>
-    <meta name="description" content={post.data.summary || post.data.title} />
-    <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ theme: 'dark', securityLevel: 'loose' });
-  
-  document.addEventListener('DOMContentLoaded', async () => {
-    const pres = document.querySelectorAll('pre[data-language="mermaid"]');
-    for (const pre of pres) {
-      const rawText = pre.textContent;
-      const div = document.createElement('div');
-      div.className = 'mermaid';
-      div.textContent = rawText;
-      pre.replaceWith(div);
-    }
-    await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
-  });
-</script>
-  </head>
-  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
-    <NavBar locale="en" currentPath="/en/ai" />
 
-    <main class="max-w-[780px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
+<ContentLayout title={post.data.title} description={post.data.summary || post.data.title} locale="en" currentPath="/en/ai">
+  <main class="max-w-[780px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full animate-fade-in">
       <a href="/en/ai" class="inline-flex items-center gap-1.5 text-text-dim text-xs sm:text-sm mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-lg border border-border bg-bg-card hover:text-text hover:bg-accent-glow hover:border-accent transition-all no-underline">
         {t("article.back_rankings", "en")}
       </a>
@@ -79,7 +53,19 @@ const { Content } = await post.render();
         <Content />
       </article>
     </main>
-
-    <Footer />
-  </body>
-</html>
+  <script is:inline>
+    window.copyArticle = function() {
+      var el = document.getElementById('md-source');
+      if (!el) return;
+      navigator.clipboard.writeText(el.value).then(function() {
+        var btn = document.querySelector('.copy-btn');
+        if (btn) {
+          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>';
+          setTimeout(function() {
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C0 .784.784 0 1.75 0h7.5C10.216 0 11 .784 11 1.75v7.5A1.75 1.75 0 019.25 11h-7.5A1.75 1.75 0 010 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"></path></svg>';
+          }, 1500);
+        }
+      });
+    };
+  </script>
+</ContentLayout>
