@@ -28,7 +28,15 @@ const { Content } = await post.render();
         <span class="text-text-muted text-xs sm:text-sm">{post.data.date}</span>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 leading-tight">{post.data.title.replace(t("page.topics_badge") + " | ", "")}</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight">{post.data.title.replace(t("page.topics_badge") + " | ", "")}</h1>
+
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
+          {post.data.tags.map((tag: string) => (
+            <span class="text-xs px-2.5 py-1 rounded-full bg-accent-glow/10 text-accent border border-accent/20 hover:border-accent/50 transition-colors">{tag}</span>
+          ))}
+        </div>
+      )}
 
       <textarea id="md-source" style="display:none">{post.body}</textarea>
 

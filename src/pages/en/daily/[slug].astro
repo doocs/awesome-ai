@@ -27,7 +27,14 @@ const { Content } = await post.render();
         <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-green/10 text-green">{t("badge.daily", "en")}</span>
         <span class="text-text-muted text-xs sm:text-sm">{post.data.date}</span>
       </div>
-      <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 leading-tight">{post.data.title}</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight">{post.data.title}</h1>
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
+          {post.data.tags.map((tag: string) => (
+            <span class="text-xs px-2.5 py-1 rounded-full bg-accent-glow/10 text-accent border border-accent/20 hover:border-accent/50 transition-colors">{tag}</span>
+          ))}
+        </div>
+      )}
       <textarea id="md-source" style="display:none">{post.body}</textarea>
       <button class="copy-btn fixed top-[68px] sm:top-[72px] right-4 sm:right-6 z-50 p-2 rounded-lg border border-border bg-bg-card hover:bg-accent-glow hover:border-accent transition-all text-text-dim hover:text-text" onclick="copyArticle()" title="Copy article">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C0 .784.784 0 1.75 0h7.5C10.216 0 11 .784 11 1.75v7.5A1.75 1.75 0 019.25 11h-7.5A1.75 1.75 0 010 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"></path></svg>
