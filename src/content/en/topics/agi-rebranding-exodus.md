@@ -71,7 +71,3 @@ The lifecycle of an AI industry buzzword is roughly two to three years: a new te
 AGI completed this cycle. The next word will too.
 
 The real question isn't what label AI companies will use next. It's whether the industry ever learns to talk about what it's actually building instead of what it's selling.
-
----
-
-*Awesome AI - No cargo-cult journalism, just signal extraction*

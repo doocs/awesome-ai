@@ -87,7 +87,3 @@ Just as web development went from "write whatever" to having the OWASP Top 10 an
 Except this time, the standards can't just target professional developers — they also need to reach people who "don't really understand tech but are building apps anyway."
 
 That challenge is bigger than most people realize.
-
----
-
-*Awesome AI - Not an info courier, only valuable filtering and analysis*

@@ -81,7 +81,3 @@ There are definitely a lot of Agent projects out there right now, but the core q
 These four projects each have their own answers. Langflow lowers the barrier to entry, Dify improves production readiness, LangChain is working on engineering standardization, and Gemini CLI is capturing the terminal workflow.
 
 None of them solve every scenario, but each has its own place. Which one you pick depends on what problem you're trying to solve.
-
----
-
-*Awesome AI - Not an info courier, only valuable filtering and analysis*

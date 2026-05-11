@@ -81,7 +81,3 @@ Cowork puts AI agents in the hands of non-programmers. Goose and NousCoder-14B m
 These aren't five separate stories. They're one industry expanding in multiple directions simultaneously — broader user base, lower price threshold, deeper platform integration, stronger local capabilities.
 
 Whoever finds the best balance across these dimensions will define the shape of next-generation AI tools.
-
----
-
-*Awesome AI - Not just moving information, filtering for what actually matters*
