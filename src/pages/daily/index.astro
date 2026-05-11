@@ -1,6 +1,7 @@
 ---
 import NavBar from "../../components/NavBar.astro";
 import Footer from "../../components/Footer.astro";
+import Head from "../../components/Head.astro";
 import Card from "../../components/Card.astro";
 import "../../styles/global.css";
 import { t } from "../../i18n/utils.ts";
@@ -50,33 +51,14 @@ function extractTags(content: string): string[] {
 }
 ---
 
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-    <title>{t("page.title_daily")} | Awesome AI</title>
-    <script is:inline>
-      (function() {
-        var stored = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'light' || (stored !== 'dark' && !prefersDark)) {
-          document.documentElement.classList.remove('dark');
-        } else {
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
-  </head>
-  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
-    <NavBar locale="zh" currentPath="/daily" />
-    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
-      <div class="grid gap-3 sm:gap-4">
-        {sorted.map((article) => (
-          <Card type="daily" title={article.data.title} date={formatDate(article.data.date)} summary={extractSummary(article.body)} tags={extractTags(article.body)} href={`/daily/${article.id.replace(".md", "")}`} />
-        ))}
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<Head title={t("page.title_daily")} lang="zh">
+  <NavBar locale="zh" currentPath="/daily" />
+  <main class="max-w-[1100px] mx-auto px-4 sm:px-6 pt-[72px] sm:pt-[80px] pb-[40px] sm:pb-[60px] flex-1 w-full">
+    <div class="grid gap-3 sm:gap-4">
+      {sorted.map((article) => (
+        <Card type="daily" title={article.data.title} date={formatDate(article.data.date)} summary={extractSummary(article.body)} tags={extractTags(article.body)} href={`/daily/${article.id.replace(".md", "")}`} />
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Head>

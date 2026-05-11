@@ -1,0 +1,40 @@
+---
+/**
+ * Shared <head> + <html> wrapper for standalone pages.
+ * Includes the theme initialization script to prevent flash.
+ * All standalone index.astro pages should use this instead of writing their own <html>/<head>.
+ */
+interface Props {
+  title: string;
+  description?: string;
+  lang?: "zh" | "en";
+}
+
+const { title, description, lang = "zh" } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <title>{title} | Awesome AI</title>
+    {description && <meta name="description" content={description} />}
+    <slot name="extra" />
+    <!-- Theme init: must run before render to prevent flash -->
+    <script is:inline>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'light' || (stored !== 'dark' && !prefersDark)) {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased flex flex-col min-h-screen">
+    <slot />
+  </body>
+</html>
