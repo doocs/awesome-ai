@@ -89,17 +89,3 @@ src/
     └── global.css              # Tailwind + 自定义排版样式
 ```
 
-## 最近更新
-
-| 类型 | 日期 | 链接 |
-|------|------|------|
-| 日报 | 2026-05-11 | [中文](https://ai.doocs.org/daily/2026-05-11) / [English](https://ai.doocs.org/en/daily/2026-05-11) |
-| 日报 | 2026-05-10 | [中文](https://ai.doocs.org/daily/2026-05-10) / [English](https://ai.doocs.org/en/daily/2026-05-10) |
-| 日报 | 2026-05-09 | [中文](https://ai.doocs.org/daily/2026-05-09) / [English](https://ai.doocs.org/en/daily/2026-05-09) |
-| 周报 | 2026-W19 | [中文](https://ai.doocs.org/weekly/2026-w19) / [English](https://ai.doocs.org/en/weekly/2026-w19) |
-| 专题 | Anthropic Cowork 与 AI 编程代理之战 | [中文](https://ai.doocs.org/topics/anthropic-cowork-coding-agent-wars) / [English](https://ai.doocs.org/en/topics/anthropic-cowork-coding-agent-wars) |
-| 专题 | AGI 品牌重塑 | [中文](https://ai.doocs.org/topics/agi-rebranding-exodus) / [English](https://ai.doocs.org/en/topics/agi-rebranding-exodus) |
-| 专题 | GitHub Agent 项目 | [中文](https://ai.doocs.org/topics/github-agent-projects) / [English](https://ai.doocs.org/en/topics/github-agent-projects) |
-| 专题 | Vibe Coding 争议 | [中文](https://ai.doocs.org/topics/vibe-coding-debate) / [English](https://ai.doocs.org/en/topics/vibe-coding-debate) |
-
-

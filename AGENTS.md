@@ -100,19 +100,7 @@ summary: "简短总结..."
 1. 在 `src/content/` 和 `src/content/en/` 生成对应的双语 Markdown 文件。
 2. 运行本地验证：`npm run build`。**只有构建成功 (Exit 0) 的文件才允许提交。**
 
-### Step 2: 评估并同步 README (必须执行) ⭐️
-**规则**：在更新内容后，Agent **必须**评估本次内容的重要性，决定是否更新根目录的 `README.md` 和 `README_EN.md`。
-
-- **何时更新 README？**
-  - 新增了 **Tools** 分类或 **Tools** 推荐。
-  - 新增了 **Models** 排行榜或模型数据。
-  - 新增了高价值的 **Topics**（专题讨论）。
-  - 项目结构发生重大变化（新增模块）。
-- **操作要求**：
-  - 若评估需要更新，**必须同时修改** 中文版 (`README.md`) 和 英文版 (`README_EN.md`)。
-  - 保持中英文描述的准确性和一致性。
-
-### Step 3: 部署推送
+### Step 2: 部署推送
 使用 `scripts/deploy_ai_pulse.py` 推送文件。
 ```bash
 # 推送中文
