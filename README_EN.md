@@ -95,10 +95,10 @@ src/
 
 Scan to follow and get daily AI news curated for you:
 
-![WeChat Official Account QR](./src/assets/wechat-qrcode.jpg)
+<img src="./src/assets/wechat-qrcode.jpg" width="200" alt="WeChat Official Account QR">
 
 ### Add Author on WeChat
 
 Scan to add the author's personal WeChat for English-speaking community:
 
-![Author WeChat](./src/assets/wechat-qr-en.jpg)
+<img src="./src/assets/wechat-qr-en.jpg" width="200" alt="Author WeChat">
