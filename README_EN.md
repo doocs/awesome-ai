@@ -2,7 +2,7 @@
 
 > Extracting real signals from the noise of AI news
 
-**Website:** [https://ai.doocs.org/](https://ai.doocs.org/)
+**Website:** [https://ai.doocs.org/en/](https://ai.doocs.org/en/)
 
 Awesome AI is a static site that curates and publishes AI industry news daily and weekly, with bilingual support (Chinese and English). It also features AI tool recommendations and global model leaderboards with auto-updated data.
 
@@ -41,53 +41,6 @@ Top 20 global model rankings across 4 dimensions:
 | Coding | SWE-bench Verified, BigCodeBench, LiveCodeBench | [/ai/models/coding](https://ai.doocs.org/ai/models/coding) |
 | Reasoning | AIME, GPQA Diamond, LiveBench | [/ai/models/reasoning](https://ai.doocs.org/ai/models/reasoning) |
 | Multimodal | MMMU, MathVista, MMBench | [/ai/models/multimodal](https://ai.doocs.org/ai/models/multimodal) |
-
-## i18n
-
-Available in **Chinese** and **English**.
-
-| Language | README | Website |
-|----------|--------|---------|
-| Chinese | [README.md](./README.md) | [ai.doocs.org](https://ai.doocs.org/) |
-| English | [README_EN.md](./README_EN.md) | [ai.doocs.org/en/](https://ai.doocs.org/en/) |
-
-## Project Structure
-
-Static site built with Astro + Tailwind CSS. All pages are generated at build time -- zero runtime dependencies.
-
-```
-src/
-├── content/                    # Chinese content
-│   ├── daily/                  # Daily digests (YYYY-MM-DD.md)
-│   ├── weekly/                 # Weekly digests (YYYY-wXX.md)
-│   ├── topics/                 # Topic articles
-│   ├── tools/                  # AI tool recommendations (7 categories)
-│   └── models/                 # AI model leaderboards (4 dimensions)
-├── content/en/                 # English content (same structure)
-│   ├── daily/
-│   ├── weekly/
-│   ├── topics/
-│   ├── tools/
-│   └── models/
-├── components/                 # Reusable Astro components
-│   ├── Card.astro
-│   ├── Footer.astro
-│   └── NavBar.astro
-├── layouts/
-│   └── BaseLayout.astro
-├── pages/                      # Route definitions
-│   ├── index.astro             # Homepage
-│   ├── search.astro            # Search page
-│   ├── ai/                     # Rankings (tools + models)
-│   ├── daily/                  # Daily archive
-│   ├── weekly/                 # Weekly archive
-│   ├── industry/               # Industry news
-│   ├── topics/                 # Discussions
-│   └── en/                     # English mirror of above
-├── i18n/                       # i18n strings (zh.json, en.json, utils.ts)
-└── styles/
-    └── global.css              # Tailwind + custom prose styles
-```
 
 ## Follow Us
 
