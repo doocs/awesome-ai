@@ -89,3 +89,16 @@ src/
     └── global.css              # Tailwind + custom prose styles
 ```
 
+## Follow Us
+
+### WeChat Official Account
+
+Scan to follow and get daily AI news curated for you:
+
+![WeChat Official Account QR](./src/assets/wechat-qrcode.jpg)
+
+### Add Author on WeChat
+
+Scan to add the author's personal WeChat for English-speaking community:
+
+![Author WeChat](./src/assets/wechat-qr-en.jpg)

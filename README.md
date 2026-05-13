@@ -89,3 +89,16 @@ src/
     └── global.css              # Tailwind + 自定义排版样式
 ```
 
+## 关注我们
+
+### 微信公众号
+
+扫码关注，获取每日 AI 资讯精选：
+
+![微信公众号二维码](./src/assets/wechat-qrcode.jpg)
+
+### 添加作者微信
+
+扫码添加作者个人微信，深度交流 AI 行业话题：
+
+![作者微信](./src/assets/wechat-qr-zh.jpg)
