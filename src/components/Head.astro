@@ -20,6 +20,14 @@ const { title, description, lang = "zh" } = Astro.props;
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <!-- Google Analytics -->
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-PLG3C6N90D" async></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLG3C6N90D');
+    </script>
     <slot name="extra" />
     <!-- Theme init: must run before render to prevent flash -->
     <script is:inline>
