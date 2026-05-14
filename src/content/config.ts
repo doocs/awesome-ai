@@ -35,7 +35,7 @@ const topics = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
-    type: z.string(),
+    type: z.literal("topic"),
     tags: z.array(z.string()).optional(),
     summary: z.string().optional(),
   }),
