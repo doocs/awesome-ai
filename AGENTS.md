@@ -23,7 +23,9 @@ awesome-ai/
 │   ├── components/           # UI 组件
 │   └── i18n/                 # 国际化翻译字典 (zh.json / en.json)
 ├── public/                   # 📂 静态资源 (⚠️ 包含关键文件: CNAME)
-├── scripts/                  # 🔧 部署脚本 (deploy_awesome_ai.py)
+├── scripts/                  # 🔧 部署与自动化脚本
+│   ├── deploy_awesome_ai.py  # 安全部署脚本（使用 git CLI，无密钥暴露）
+│   └── update_ai_rankings.py # 排行榜自动更新脚本
 ├── README.md                 # 📖 项目介绍 (中文)
 └── README_EN.md              # 📖 项目介绍 (英文)
 ```
@@ -102,7 +104,7 @@ summary: "简短总结..."
 2. 运行本地验证：`npm run build`。**只有构建成功 (Exit 0) 的文件才允许提交。**
 
 ### Step 2: 部署推送
-使用 `scripts/deploy_awesome_ai.py` 推送文件。
+使用 `scripts/deploy_awesome_ai.py` 推送文件（使用 git CLI，通过本地 git 凭证认证，不暴露密钥）。
 ```bash
 # 推送中文
 python3 scripts/deploy_awesome_ai.py src/content/daily/YYYY-MM-DD.md "docs: add daily news YYYY-MM-DD"
@@ -112,8 +114,9 @@ python3 scripts/deploy_awesome_ai.py src/content/en/daily/YYYY-MM-DD.md "docs: a
 ```
 
 ## 🔒 安全与敏感信息规范
-1. **Token 保密**：
-   - 部署脚本 (`deploy_awesome_ai.py`) 会从环境文件读取 Token。**Agent 在执行脚本时，绝不能在日志、回复或输出中打印 Token 的值。**
+1. **部署安全**：
+   - 部署脚本（`deploy_awesome_ai.py`）使用 git CLI 进行推送，依赖本地 git 凭证存储，**不读取或暴露任何 Token**。
+   - Token 等敏感信息存放在 `~/.awesome_ai.env`，不在仓库中存储或引用。
    - 若遇到认证失败，仅提示 "Authentication failed" 或 "Check token validity"。
 2. **禁止硬编码**：
    - 永远不要将 Token 硬编码在生成的脚本代码或 Markdown 内容中。
