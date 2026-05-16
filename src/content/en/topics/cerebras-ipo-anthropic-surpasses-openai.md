@@ -3,7 +3,7 @@ title: "Topic | AI Industry at a Historic Inflection Point: Cerebras' $100B IPO 
 date: "2026-05-15"
 type: "topic"
 tags: ["Cerebras", "Anthropic", "OpenAI", "AI Chips", "Enterprise Adoption", "Industry Landscape", "Claude Code"]
-summary: "Mid-May 2026 sees three simultaneous industry-shaping events: Cerebras goes public with a $100B market cap, Anthropic surpasses OpenAI in US enterprise adoption for the first time, and Claude Code's /goals command redefines the reliability standard for coding agents"
+summary: "Mid-May 2026 sees three simultaneous industry-shaping events: Cerebras goes public with a $100B market cap, Anthropic surpasses OpenAI in US enterprise adoption for the first time, and Claude Code's /goal command redefines the reliability standard for coding agents"
 ---
 
 > The second week of May 2026 delivered three events that, taken together, signal a fundamental shift in the AI industry's competitive landscape. They are not isolated incidents — they are three converging signals of an industry accelerating toward maturity.
@@ -44,19 +44,19 @@ Meanwhile, a separate Gallup survey found that for the first time, 50% of employ
 
 ---
 
-## Claude Code's /goals Command: Coding Agents Enter the "Verifiable" Era
+## Claude Code's /goal Command: Coding Agents Enter the "Verifiable" Era
 
-On May 14, Anthropic launched `/goals` for Claude Code — a seemingly small feature with significant architectural implications.
+On May 14, Anthropic launched `/goal` for Claude Code — a seemingly small feature with significant architectural implications.
 
 **The core idea: separate the model that does the work from the model that decides when the work is done.**
 
 In traditional AI coding agent workflows, the same model both executes tasks (reading files, modifying code, running tests) and judges whether the task is complete. This is like asking a student to grade their own homework — the model may prematurely declare "done" due to context window limits or reasoning drift.
 
-`/goals` introduces a decoupled architecture: after a user defines a goal, Claude executes turn by turn, but an independent evaluator model (Haiku by default) checks whether the goal conditions are met each time the agent attempts to stop. If unmet, the agent keeps running. If met, the result is logged and the goal is cleared.
+`/goal` introduces a decoupled architecture: after a user defines a goal, Claude executes turn by turn, but an independent evaluator model (Haiku by default) checks whether the goal conditions are met each time the agent attempts to stop. If unmet, the agent keeps running. If met, the result is logged and the goal is cleared.
 
 Competitors are working on similar solutions. OpenAI lets users attach custom evaluators but leaves the termination decision to the model itself. Google's Agent Development Kit and LangGraph support independent evaluation, but developers must architect the critic node and termination logic themselves. Anthropic's approach makes the independent evaluator the default.
 
-> **Awesome AI View:** The significance of `/goals` isn't that it solves a technical problem — it exposes an industry-wide cognitive shift. The reliability of AI agents no longer depends on how smart the model is, but on how the system is architected. "You can't trust a model to judge its own homework" — this quote from an enterprise user captures the essence. As AI agents take on increasingly critical tasks (code migrations, data pipelines, security audits), the gap between "it thinks it's done" and "it's actually done" can have serious consequences. Separating the executor from the evaluator embeds verifiability into the agent architecture itself. This may be the key step for AI agents moving from "usable" to "trustworthy."
+> **Awesome AI View:** The significance of `/goal` isn't that it solves a technical problem — it exposes an industry-wide cognitive shift. The reliability of AI agents no longer depends on how smart the model is, but on how the system is architected. "You can't trust a model to judge its own homework" — this quote from an enterprise user captures the essence. As AI agents take on increasingly critical tasks (code migrations, data pipelines, security audits), the gap between "it thinks it's done" and "it's actually done" can have serious consequences. Separating the executor from the evaluator embeds verifiability into the agent architecture itself. This may be the key step for AI agents moving from "usable" to "trustworthy."
 
 ---
 
@@ -68,6 +68,6 @@ Reading these three stories together reveals a clear narrative:
 
 **At the application level**, Anthropic surpassing OpenAI marks the enterprise AI market's transition from "consumer brand-driven" to "engineering capability-driven." Enterprise customers are no longer choosing OpenAI because "ChatGPT is famous" — they're choosing Claude for its reliability, developer tool integration, and security profile.
 
-**At the tool level**, Claude Code's `/goals` command and Anthropic's Agent SDK credit system (reinstating third-party agents like OpenClaw but with dedicated API-rate credits) both point to a trend: **AI agents are maturing from experimental tools into enterprise-grade products** — meaning verifiability, observability, and controlled billing models matter more than raw "power."
+**At the tool level**, Claude Code's `/goal` command and Anthropic's Agent SDK credit system (reinstating third-party agents like OpenClaw but with dedicated API-rate credits) both point to a trend: **AI agents are maturing from experimental tools into enterprise-grade products** — meaning verifiability, observability, and controlled billing models matter more than raw "power."
 
 > **Awesome AI View:** These three stories collectively answer one question: What's the AI industry's next chapter? The answer may not be "stronger models" but "more reliable systems." When a hundred-billion-dollar chip company bets on inference speed, enterprise customers shift from consumer brands to engineering capabilities, and coding agents build in verification mechanisms, the industry's focus is shifting from "what AI can do" to "how reliably AI can do it." That shift may be more consequential than any single technical breakthrough — because it determines whether AI truly moves from lab to production, from geek toy to enterprise infrastructure.
