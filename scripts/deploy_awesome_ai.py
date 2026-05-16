@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""deploy_ai_pulse.py - Stage, commit, and push content files to doocs/awesome-ai."""
+"""deploy_awesome_ai.py - Stage, commit, and push content files to doocs/awesome-ai."""
 
 import subprocess
 import sys
@@ -17,7 +17,7 @@ def run(cmd, cwd="/tmp/awesome-ai"):
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: deploy_ai_pulse.py <file_path> <commit_message>")
+        print("Usage: deploy_awesome_ai.py <file_path> <commit_message>")
         sys.exit(1)
 
     file_path = sys.argv[1]
