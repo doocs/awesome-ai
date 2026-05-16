@@ -23,9 +23,8 @@ awesome-ai/
 │   ├── components/           # UI 组件
 │   └── i18n/                 # 国际化翻译字典 (zh.json / en.json)
 ├── public/                   # 📂 静态资源 (⚠️ 包含关键文件: CNAME)
-├── scripts/                  # 🔧 部署与自动化脚本
-│   ├── deploy_awesome_ai.py  # 安全部署脚本（使用 git CLI，无密钥暴露）
-│   └── update_ai_rankings.py # 排行榜自动更新脚本
+├── scripts/                  # 🔧 部署脚本
+│   └── deploy_awesome_ai.py  # 安全部署脚本（使用 git CLI，无密钥暴露）
 ├── README.md                 # 📖 项目介绍 (中文)
 └── README_EN.md              # 📖 项目介绍 (英文)
 ```
