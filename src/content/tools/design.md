@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [Bolt.new](https://bolt.new) | 免费/$50/月 | 全栈原型 | 一句话生成完整 Web 应用原型 |
 | 19 | [Uizard](https://uizard.io) | 免费/$12/月 | 线框图转设计 | 手绘草图秒变 UI 设计稿 |
 | 20 | [Visily](https://visily.ai) | 免费 | 截图转设计 | 把截图变成可编辑的设计稿 |
+| 21 | [igly.ai](https://igly.ai) | 免费积分 | AI 图像编辑 | 背景移除、局部重绘、图像放大和生成式填充 |
