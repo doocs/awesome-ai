@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [Bolt.new](https://bolt.new) | Free/$50/mo | Full-stack prototyping | Generate complete web apps in one prompt |
 | 19 | [Uizard](https://uizard.io) | Free/$12/mo | Wireframe to design | Turn hand-drawn sketches into UI designs |
 | 20 | [Visily](https://visily.ai) | Free | Screenshot to design | Convert screenshots to editable designs |
+| 21 | [igly.ai](https://igly.ai) | Free credits | AI image editing | Background removal, inpainting, upscaling, and generative fill |
