@@ -31,3 +31,4 @@ date: "2026-05-10"
 | 19 | [Uizard](https://uizard.io) | Free/$12/mo | Wireframe to design | Turn hand-drawn sketches into UI designs |
 | 20 | [Visily](https://visily.ai) | Free | Screenshot to design | Convert screenshots to editable designs |
 | 21 | [igly.ai](https://igly.ai) | Free credits | AI image editing | Background removal, inpainting, upscaling, and generative fill |
+| 22 | [PixMind](https://www.pixmind.io/) | Freemium | Multi-model image and video creation | Browser-based access to 25+ models, reference-image workflows, and natural-language editing |
