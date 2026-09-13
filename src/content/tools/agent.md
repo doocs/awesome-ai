@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | 开源免费 | 自主 Agent | 设定目标后自主执行任务的 AI Agent |
 | 19 | [BabyAGI](https://babyagi.org) | 开源免费 | 任务驱动 Agent | 自主分解和执行任务的 Agent 原型 |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | 开源免费 | 记忆 Agent | 给 Agent 添加长期记忆能力的框架 |
+| 21 | [Orkas](https://orkas.ai/?source=gh_doocs) | 开源免费 | 本地优先的 AI 团队桌面应用 | Commander 通过一个对话协调专业 Agent 并行或串行完成复杂工作 |
