@@ -31,3 +31,4 @@ date: "2026-05-10"
 | 19 | [Uizard](https://uizard.io) | 免费/$12/月 | 线框图转设计 | 手绘草图秒变 UI 设计稿 |
 | 20 | [Visily](https://visily.ai) | 免费 | 截图转设计 | 把截图变成可编辑的设计稿 |
 | 21 | [igly.ai](https://igly.ai) | 免费积分 | AI 图像编辑 | 背景移除、局部重绘、图像放大和生成式填充 |
+| 22 | [Photoreal AI](https://photorealistic-ai.com/zh) | 免费额度 | 已有照片二次编辑 | 局部重绘、换背景、去水印、修复和放大 |
