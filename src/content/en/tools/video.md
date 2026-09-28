@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [HeyGen](https://heygen.com) | Free/$29/mo | Digital humans | Most realistic AI digital human videos |
 | 19 | [D-ID](https://d-id.com) | Free/$5.9/mo | Photo talking | Make still photos talk |
 | 20 | [Pictory](https://pictory.ai) | $19/mo | Script to video | Turn text scripts into illustrated videos |
+| 21 | [shortshort](https://www.shortshort.io) | Free/from €12/mo | Sentence-aware vertical clips | Turns one long video into 9:16 shorts that start and end on a complete sentence |
