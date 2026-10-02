@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | Open-source | Autonomous agent | Goal-driven autonomous AI agent |
 | 19 | [BabyAGI](https://babyagi.org) | Open-source | Task-driven agent | Self-decomposing task execution agent |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | Open-source | Memory agents | Framework for adding long-term memory to agents |
+| 21 | [Orkas](https://orkas.ai/?source=gh_doocs) | Open-source | Local-first desktop AI workforce | A Commander coordinates specialist agents in parallel or sequence through one chat |
