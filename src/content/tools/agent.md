@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | 开源免费 | 自主 Agent | 设定目标后自主执行任务的 AI Agent |
 | 19 | [BabyAGI](https://babyagi.org) | 开源免费 | 任务驱动 Agent | 自主分解和执行任务的 Agent 原型 |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | 开源免费 | 记忆 Agent | 给 Agent 添加长期记忆能力的框架 |
+| 21 | [nika](https://github.com/supernovae-st/nika) | 开源免费 | 工作流引擎 | .nika.yaml 声明式 DAG，执行前静态检查（schema/权限/成本），执行后防篡改 trace，本地优先 |

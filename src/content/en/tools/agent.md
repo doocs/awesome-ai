@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | Open-source | Autonomous agent | Goal-driven autonomous AI agent |
 | 19 | [BabyAGI](https://babyagi.org) | Open-source | Task-driven agent | Self-decomposing task execution agent |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | Open-source | Memory agents | Framework for adding long-term memory to agents |
+| 21 | [nika](https://github.com/supernovae-st/nika) | Open-source | Workflow engine | .nika.yaml DAGs statically checked before execution, tamper-evident traces after, local-first |
