@@ -30,3 +30,4 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | Open-source | Autonomous agent | Goal-driven autonomous AI agent |
 | 19 | [BabyAGI](https://babyagi.org) | Open-source | Task-driven agent | Self-decomposing task execution agent |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | Open-source | Memory agents | Framework for adding long-term memory to agents |
+| 21 | [YYLO](https://github.com/yylo-dev/yylo) | Open-source | Command-line agent orchestration | Command-line orchestration of coding agents with isolated worktrees per task |
