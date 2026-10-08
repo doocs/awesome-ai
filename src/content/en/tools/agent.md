@@ -30,3 +30,6 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | Open-source | Autonomous agent | Goal-driven autonomous AI agent |
 | 19 | [BabyAGI](https://babyagi.org) | Open-source | Task-driven agent | Self-decomposing task execution agent |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | Open-source | Memory agents | Framework for adding long-term memory to agents |
+| — | [Tale](https://tale.dev) | Community self-hosted free; Cloud/Enterprise paid | Shared human/agent workspace | Coordinate projects, tasks, files and instructions with configured AI agents |
+
+> **Awesome AI View:** Tale separates collaboration state from agent execution. Its authenticated REST API handles project/task CRUD; its deployment-scoped MCP endpoint exposes 22 knowledge and automation tools. This makes shared work context available to configured agents while preserving an explicit execution boundary: assignment alone does not run an agent, and execution requires a configured, authorized trigger. Community self-hosting also requires operating the deployment and supplying model/infrastructure resources; Cloud and Enterprise are paid. This describes documented architecture, not a runtime test or compatibility guarantee. [Source](https://github.com/tale-project/tale), [MCP documentation](https://docs.tale.dev/develop/mcp-endpoint).

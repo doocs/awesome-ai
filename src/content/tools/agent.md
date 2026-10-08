@@ -30,3 +30,6 @@ date: "2026-05-10"
 | 18 | [AgentGPT](https://agentgpt.reworkd.ai) | 开源免费 | 自主 Agent | 设定目标后自主执行任务的 AI Agent |
 | 19 | [BabyAGI](https://babyagi.org) | 开源免费 | 任务驱动 Agent | 自主分解和执行任务的 Agent 原型 |
 | 20 | [Cognee](https://github.com/topoteretes/cognee) | 开源免费 | 记忆 Agent | 给 Agent 添加长期记忆能力的框架 |
+| — | [Tale](https://tale.dev) | Community 自托管免费；Cloud/Enterprise 付费 | 人与智能体共享工作区 | 通过已配置的 AI 智能体协调项目、任务、文件与指令 |
+
+> **Awesome AI 观点：** Tale 将协作状态与智能体执行分开：经过身份验证的 REST API 处理项目与任务的增删改查，部署范围内的 MCP 端点提供 22 个知识与自动化工具。已配置的智能体可以访问共享工作上下文，但分配任务本身不会运行智能体；执行需要已配置且获授权的触发器。Community 自托管还需要自行运维部署，并承担模型与基础设施成本；Cloud 和 Enterprise 为付费方案。这里介绍的是公开文档中的架构，并非运行测试或兼容性保证。[源代码](https://github.com/tale-project/tale)、[MCP 文档](https://docs.tale.dev/develop/mcp-endpoint)。
