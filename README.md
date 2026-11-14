@@ -41,6 +41,7 @@ Awesome AI 是一个 AI 行业资讯聚合站点，提供双语（中文/英文�
 | 代码能力 | SWE-bench Verified, BigCodeBench, LiveCodeBench | [/ai/models/coding](https://ai.doocs.org/ai/models/coding) |
 | 推理能力 | AIME, GPQA Diamond, LiveBench | [/ai/models/reasoning](https://ai.doocs.org/ai/models/reasoning) |
 | 多模态 | MMMU, MathVista, MMBench | [/ai/models/multimodal](https://ai.doocs.org/ai/models/multimodal) |
+| 独立综合排行 | 16 项公开基准测试，含价格与上下文窗口 | [ModelBenchmark](https://modelbenchmark.io) |
 
 ## 关注我们
 
